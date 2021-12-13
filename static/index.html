@@ -131,17 +131,17 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
         sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <form method="post" action="#" class="form-inline">
-        <div class="form-group"
+    <form method="get" action="results.html" class="form-inline">
+        <div class="form-group">
         <label><b>Search</b></label>
         <br/>
-        <select>
-            <option value="1">All Collections</option>
-            <option value="2">Government of Canada Collection</option>
-            <option value="3">Truth and Reconciliation</option>
-            <option value="4">Collection 4</option>
+        <select name='collection'>
+            <option value="all">All Collections</option>
+            <option value="gov">Government of Canada Collection</option>
+            <option value="6602">Truth and Reconciliation</option>
+            <option value="13693">Coronavirus/COVID-19</option>
         </select>
-        <input class="form-control"/>
+        <input type="search" name="q"/>
         <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
@@ -149,7 +149,7 @@
     <br/>
     <b>Browse</b>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-6 col-md-3 col-lg-2 text-left">
                 <img src="canada.jpeg" float="left"/>
@@ -171,7 +171,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-3 col-lg-2 text-left">
+            <div class="col-md-3 col-lg-2 text-left">
                 <img src="canada.jpeg" float="left"/>
             </div>
             <div class="col-md-9 col-lg-10">
