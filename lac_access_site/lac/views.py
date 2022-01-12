@@ -14,7 +14,7 @@ def collection(request, lac_collection_id):
     #TODO render using db collections
     #TODO distinguish between LAC and goc collections
     collection_type = "lac" if lac_collection_id != 9155 else "goc"
-    context = {"seed_data": get_seeds(lac_collection_id, None), "id":lac_collection_id, "type":collection_type}
+    context = {"seed_data": get_seeds(lac_collection_id), "id":lac_collection_id, "type":collection_type}
 
     print(context)
     return render(request, 'lac/collection.html', context)

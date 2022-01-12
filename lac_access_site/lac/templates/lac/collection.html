@@ -190,6 +190,18 @@
         {% endif %}
         </thead>
         <tbody>
+
+        {% if type == "lac"%}
+        {% for seed in seed_data %}
+        <tr>
+            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
+            <td><a href="https://wayback.archive-it.org/{{id}}/*/{{seed.url}}">{{ seed.url }}</a></td>
+            <td>{% if seed.subject%}{{seed.subject}}{% else %}None{% endif %}</td>
+            <td>{% if seed.language %}{{seed.language}}{% else %}None{% endif %}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+
         {% if type == "goc"%}
         {% for seed in seed_data %}
         <tr>
@@ -200,16 +212,6 @@
         {% endfor %}
         {% endif %}
 
-        {% if type == "lac"%}
-        {% for seed in seed_data %}
-        <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
-            <td><a href="https://wayback.archive-it.org/{{id}}/*/{{seed.url}}">{{ seed.url }}</a></td>
-            <td>{% if seed.topic%}{{seed.topic}}{% else %}None{% endif %}</td>
-            <td>{% if seed.language %}{{seed.language}}{% else %}None{% endif %}</td>
-        </tr>
-        {% endfor %}
-        {% endif %}
 
         </tbody>
     </table>
