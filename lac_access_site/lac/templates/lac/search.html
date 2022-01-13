@@ -30,6 +30,11 @@
                 {%autoescape off%}
                 <p>{{item.description }}</p>
                 {%endautoescape%}
+                <b>Filetype:</b> {{item.type}}
+                <br/>
+                <b>Site:</b> {{item.site}}
+                <br/>
+                <b>Date:</b> {{item.date}}
                 <hr/>
                 {%endfor%}
         </div>

@@ -37,8 +37,10 @@
         <div class="form-group"
         <label><b>Search</b></label>
         <br/>
+        <a href="advanced-search-page.html">Advanced Search</a>
+        <br/>
         <input class="form-control"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
 
@@ -47,7 +49,7 @@
         <label><b>Filter</b></label>
         <br/>
         <input class="form-control"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Filter</button>
         </div>
     </form>
 
@@ -65,8 +67,8 @@
         {% if type == "goc"%}
         <tr>
             <th scope="col">Title</th>
-            <th scope="col">URL</th>
             <th scope="col">Department</th>
+            <th scope="col">URL</th>
         </tr>
         {% endif %}
         </thead>
@@ -87,8 +89,8 @@
         {% for seed in seed_data %}
         <tr>
             <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
-            <td><a href="https://wayback.archive-it.org/{{id}}/*/{{seed.url}}">{{ seed.url }}</a></td>
             <td>{% if seed.department%}{{seed.department}}{% else %}None{% endif %}</td>
+            <td><a href="https://wayback.archive-it.org/{{id}}/*/{{seed.url}}">{{ seed.url }}</a></td>
         </tr>
         {% endfor %}
         {% endif %}
