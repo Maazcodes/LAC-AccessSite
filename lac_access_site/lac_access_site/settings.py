@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 API_KEY = ''
 API_ROOT = 'https://partner.archive-it.org/api/'
 
+SEARCH_ROOT = 'http://archive-it.org/search-master/opensearch'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 

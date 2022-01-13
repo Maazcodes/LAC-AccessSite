@@ -1,14 +1,20 @@
 from django.shortcuts import render
-from lac.util import get_seeds
+from lac.util import get_seeds, get_search_results
 #from django.http import HttpResponse
 
 # Create your views here.
+# TODO add some malformed request handling - 404 etc
 
 def index(request):
     return render(request, 'lac/index.html', {})
 
 def search(request):
-    return render(request, 'lac/search.html', {})
+    query = request.GET["q"]
+    collections = request.GET["i"]
+
+    results = get_search_results(query, collections)
+    
+    return render(request, 'lac/search.html', {'results':results})
 
 def collection(request, lac_collection_id):
     #TODO render using db collections

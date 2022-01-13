@@ -13,7 +13,7 @@ function populateResults(results){
   //title, url, date captured, description, collection
   var searchContainer = document.getElementById('results');
 
-  console.log(searchContainer);
+  //console.log(searchContainer);
 
   searchContainer.innerHTML = results[0].innerHTML;
    
