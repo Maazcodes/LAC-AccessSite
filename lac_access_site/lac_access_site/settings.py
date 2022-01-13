@@ -22,6 +22,8 @@ API_ROOT = 'https://partner.archive-it.org/api/'
 
 SEARCH_ROOT = 'http://archive-it.org/search-master/opensearch'
 
+MEDIA_ROOT = 'img'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
