@@ -27,17 +27,17 @@ def get_seeds(collection_id):
 
     return seeds
 
-def get_search_results(query,collection_ids=[]):
+def get_search_results(query,collection_ids="all"):
     endpoint = settings.SEARCH_ROOT 
     params = {"fmt":"json","q":query}
 
-    if not collection_ids:
+    if collection_ids=="all":
         # TODO derive from db models
         collection_ids = [6602,9155]
     params["i"]=collection_ids
 
     response = requests.get(endpoint, params=params)
 
-    #xml_parser.fromstring(response.text)
+    pprint.pprint(response.json())
 
     return response.json()

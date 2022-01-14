@@ -16,6 +16,9 @@ def search(request):
     
     return render(request, 'lac/search.html', {'results':results})
 
+def search_page(request):
+    return render(request, 'lac/search-page.html', {})
+
 def collection(request, lac_collection_id):
     #TODO render using db collections
     #TODO distinguish between LAC and goc collections

@@ -1,0 +1,51 @@
+{% extends "./gcweb-base.html" %}
+
+{% block content %}
+    <form method="get" action="search-results" class="form-inline">
+        <div class="form-group">
+        <label><b>Search</b></label>
+        <br/>
+        <a href="advanced-search-page.html">Advanced Search</a>
+        <br/>
+        <select name='i'>
+            <option value="all">All Collections</option>
+            <option value="9155">Government of Canada Collection</option>
+            <option value="6602">Truth and Reconciliation</option>
+            <option value="13693">Coronavirus/COVID-19</option>
+        </select>
+        <input type="search" name="q"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <h1 id="wb-cont" property="name">Search Results (Prototype)</h1>
+    
+    <div class="row">
+        <!--
+        <div class="col-sm-6 col-md-5 col-lg-4">    
+                <div class="filterbox" >
+                        <h3>Filter Results</h3>
+                                <form method="post" action="#" class="form-inline">
+                                <div class="form-group">
+                                        <label>Date Range:</label> 
+                                        <input class="form-control"/>
+                                        <label>Domain: </label> 
+                                        <input class="form-control"/>
+                                        <label>Collection: </label> 
+                                        <input class="form-control"/>
+                                        <label>File Type: </label> 
+                                        <input class="form-control"/>
+                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                </div>
+                                </form>
+                </div>
+        </div>
+        --!>
+
+        <div id="results">
+        <h2>Loading search results...</h2>
+        </div>
+        <script src="static/search.js"></script>
+    </div>
+
+{% endblock %}
