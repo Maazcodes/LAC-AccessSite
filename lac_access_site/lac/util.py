@@ -1,6 +1,7 @@
 # LAC Access Site Utilities 
 from django.conf import settings
 from functools import reduce
+from time import sleep
 import xml.etree.ElementTree as xml_parser
 import requests
 
@@ -37,7 +38,14 @@ def get_search_results(query,collection_ids="all"):
     params["i"]=collection_ids
 
     response = requests.get(endpoint, params=params)
+    
+    # fix 'decode error' ie check for no result, try again 
+    if not response.ok:
+        sleep(1)
+        response = requests.get(endpoint, params=params)
 
-    pprint.pprint(response.json())
+    #pprint.pprint(response.json())
+    #pprint.pprint(response.text())
+
 
     return response.json()
