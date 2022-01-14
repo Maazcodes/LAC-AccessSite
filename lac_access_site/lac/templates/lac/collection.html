@@ -33,13 +33,14 @@
         </div>
     </div>
 
-    <form method="post" action="search-results" class="form-inline">
+    <form method="get" action="/search-results" class="form-inline">
         <div class="form-group"
         <label><b>Search</b></label>
         <br/>
         <a href="advanced-search-page.html">Advanced Search</a>
         <br/>
-        <input class="form-control"/>
+        <input type="search" name="q"/>
+        <input type="hidden" name="i" value="{% if type == "goc"%}9155{% endif %}{% if type == "lac"%}6602{% endif %}{% if type == "covid"%}13693{% endif %}"/>
         <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
@@ -48,7 +49,7 @@
         <div class="form-group"
         <label><b>Filter</b></label>
         <br/>
-        <input class="form-control"/>
+        <input class="form-control" placeholder="(Under Construction)"/>
         <button type="submit" class="btn btn-primary">Filter</button>
         </div>
     </form>
