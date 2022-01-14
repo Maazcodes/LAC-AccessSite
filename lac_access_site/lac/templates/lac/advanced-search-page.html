@@ -1,0 +1,56 @@
+{% extends "./gcweb-base.html" %}
+
+{% block content %}
+    <form method="get" action="advanced-search-results" class="form-inline">
+        <label for="collectionSelect">Select Collection:</label>
+        <select id="collectionSelect" name='i'>
+            <option value="all">All Collections</option>
+            <option value="9155">Government of Canada Collection</option>
+            <option value="6602">Truth and Reconciliation</option>
+            <option value="13693">Coronavirus/COVID-19</option>
+        </select>
+        <br/>
+
+        <label for="queryField">Find these words:</label>
+        <input id="queryField" type="search" name="q" value=""/>
+        <br/>
+
+        <label for="antiQueryField">None of these words:</label>
+        <input id="antiQueryField" type="search" name="nq" value=""/>
+        <br/>
+
+        <label for="exactField">This exact phrase:</label>
+        <input id="exactField" type="search" name="exact" value=""/>
+        <br/>
+
+        <label for="websiteField">Within this website:</label>
+        <input id="websiteField" type="search" name="site" value=""/>
+        <br/>
+
+        <!-- TODO filetype selection dropdown -->
+        <label for="fileField">File type:</label>
+        <input id="fileField" type="search" name="filetype" value=""/>
+        <br/>
+
+        <!-- TODO date picker -->
+        <label for="startField">Start date:</label>
+        <input id="startField" type="search" name="start" value="" placeholder="yyyy-mm-dd"/>
+        <br/>
+
+        <label for="endField">End date:</label>
+        <input id="endField" type="search" name="end" value="" placeholder="yyyy-mm-dd"/>
+        <br/>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <h1 id="wb-cont" property="name">Search Results (Prototype)</h1>
+    
+    <div class="row">
+        <div id="results">
+        <h2>Loading search results...</h2>
+        </div>
+        <script src="static/search.js"></script>
+    </div>
+
+{% endblock %}

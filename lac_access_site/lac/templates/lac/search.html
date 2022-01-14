@@ -1,3 +1,5 @@
+
+{% if results.items %}
 <div id="search-results">
         {% for item in results.items %}
         <h3>{{item.title}}</h3>
@@ -14,3 +16,6 @@
         {%endfor%}
 </div>
 
+{% else %}
+<h2>No search results!</h2>
+{% endif %}

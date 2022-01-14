@@ -28,7 +28,7 @@ def get_seeds(collection_id):
 
     return seeds
 
-def get_search_results(query,collection_ids="all"):
+def get_search_results(query,collection_ids="all", advanced=dict()):
     endpoint = settings.SEARCH_ROOT 
     params = {"fmt":"json","q":query}
 
@@ -37,6 +37,23 @@ def get_search_results(query,collection_ids="all"):
         collection_ids = [6602,9155]
     params["i"]=collection_ids
 
+    # handle params from the advanced search interface
+    # TODO can maybe reduce these
+    for param_name,value in advanced.items():
+        if param_name=='nq' and value != '':
+            params["q"]=query+' -'+value
+        if param_name=='exact' and value != '':
+            params["q"]=query+' \"'+value+'\"'
+        if param_name=='site' and value != '':
+            params["s"]=value
+        if param_name=='filetype' and value != '':
+            params["t"]=value
+        if param_name=='start' and value != '':
+            params["start_date"]=value
+        if param_name=='end' and value != '':
+            params["end_date"]=value
+
+    pprint.pprint(params)
     response = requests.get(endpoint, params=params)
     
     # fix 'decode error' ie check for no result, try again 
@@ -44,7 +61,7 @@ def get_search_results(query,collection_ids="all"):
         sleep(1)
         response = requests.get(endpoint, params=params)
 
-    #pprint.pprint(response.json())
+    pprint.pprint(response.json())
     #pprint.pprint(response.text())
 
 
