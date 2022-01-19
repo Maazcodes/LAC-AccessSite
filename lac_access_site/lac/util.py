@@ -1,11 +1,13 @@
 # LAC Access Site Utilities 
 from django.conf import settings
 from functools import reduce
-from time import sleep
-import xml.etree.ElementTree as xml_parser
 import requests
+from requests.packages.urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 
+import http
 import pprint
+
 
 # use http to fetch results from the partner site's rest api
 def get_seeds(collection_id):
@@ -25,6 +27,7 @@ def get_seeds(collection_id):
         for label, data in seed["metadata"].items():
             seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
         seeds.append(seed_info)
+    http_session.mount('https://', adapter)
 
     return seeds
 
@@ -53,16 +56,15 @@ def get_search_results(query,collection_ids="all", advanced=dict()):
         if param_name=='end' and value != '':
             params["end_date"]=value
 
-    pprint.pprint(params)
-    response = requests.get(endpoint, params=params)
-    
-    # fix 'decode error' ie check for no result, try again 
-    if not response.ok:
-        sleep(1)
-        response = requests.get(endpoint, params=params)
+    retry_strategy = Retry(total=8, backoff_factor=3, status_forcelist=[429, 500, 502, 503, 504])
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    http_session = requests.Session()
+    http_session.mount('https://', adapter)
 
-    pprint.pprint(response.json())
-    #pprint.pprint(response.text())
+    #debugging 
+    print("Sending search query")
+    http.client.HTTPConnection.debuglevel = 1
 
+    response = http_session.get(endpoint, params=params)
 
     return response.json()
