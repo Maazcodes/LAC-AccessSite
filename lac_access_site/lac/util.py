@@ -27,7 +27,6 @@ def get_seeds(collection_id):
         for label, data in seed["metadata"].items():
             seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
         seeds.append(seed_info)
-    http_session.mount('https://', adapter)
 
     return seeds
 
