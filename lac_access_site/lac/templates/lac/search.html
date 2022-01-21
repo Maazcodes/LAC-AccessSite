@@ -3,7 +3,7 @@
 <div id="search-results">
         {% for item in results.items %}
         <h3>{{item.title}}</h3>
-        <a href="https://wayback.archive-it.org/{{item.index}}/*/{{item.link}}">{{item.title}}</a>
+        <a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{item.link}}">{{item.title}}</a>
         {%autoescape off%}
         <p>{{item.description }}</p>
         {%endautoescape%}

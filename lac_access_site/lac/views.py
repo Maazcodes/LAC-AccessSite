@@ -28,6 +28,6 @@ def collection(request, lac_collection_id):
     collection_type = "lac" if lac_collection_id != 9155 else "goc"
     context = {"seed_data": get_seeds(lac_collection_id), "id":lac_collection_id, "type":collection_type}
 
-    print(context)
+    #print(context)
     return render(request, 'lac/collection.html', context)
 
