@@ -11,25 +11,16 @@
 
             {% if type == "goc"%}
             <b><a href="#">Government of Canada Collection</a></b>
+            <p>This collection is made up of Government of Canada websites archived by Library and Archives Canada between 2005 and the present.</p>
             {% endif %}
             {% if type == "lac"%}
             <b><a href="#">Truth and Reconciliation Collection</a></b>
+            <p>Library and Archives Canada’s (LAC) Truth and Reconciliation Commission Web Archive provides access to archival copies of the websites of organizations connected with the Truth and Reconciliation Commission of Canada (TRC), either as active partners at national events or through initiatives to support commemoration. The collection was curated in collaboration with the University of Winnipeg Library, the University of Manitoba Libraries, and the National Centre for Truth and Reconciliation (NCTR).</p>
             {% endif %}
             {% if type == "covid"%}
             <b><a href="#">Coronavirus/COVID-19 Collection</a></b>
+            <p>This collection was created to preserve web content related to the ongoing response and effect of the Novel Coronavirus (Covid-19) pandemic. </p>
             {% endif %}
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                et
-                dolore
-                magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo
-                consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur.
-                Excepteur
-                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p>
         </div>
     </div>
 
@@ -75,7 +66,15 @@
         </thead>
         <tbody>
 
-        {% if type == "lac"%}
+        {% if type == "goc"%}
+        {% for seed in seed_data %}
+        <tr>
+            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
+            <td>{% if seed.department%}{{seed.department}}{% else %}None{% endif %}</td>
+            <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
         {% for seed in seed_data %}
         <tr>
             <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
@@ -85,17 +84,6 @@
         </tr>
         {% endfor %}
         {% endif %}
-
-        {% if type == "goc"%}
-        {% for seed in seed_data %}
-        <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
-            <td>{% if seed.department%}{{seed.department}}{% else %}None{% endif %}</td>
-            <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-
 
         </tbody>
     </table>

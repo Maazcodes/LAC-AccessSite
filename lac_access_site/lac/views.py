@@ -25,7 +25,12 @@ def advanced_search_page(request):
 def collection(request, lac_collection_id):
     #TODO render using db collections
     #TODO distinguish between LAC and goc collections
-    collection_type = "lac" if lac_collection_id != 9155 else "goc"
+    if lac_collection_id == 9155:
+        collection_type = "lac"
+    elif lac_collection_id == 13693:
+        collection_type = "covid"
+    else:
+        collection_type = "goc"
     context = {"seed_data": get_seeds(lac_collection_id), "id":lac_collection_id, "type":collection_type}
 
     #print(context)

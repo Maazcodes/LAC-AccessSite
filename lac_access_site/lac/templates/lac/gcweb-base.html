@@ -50,30 +50,11 @@
                 <link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"/>
             </div>
 
-
-            <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
-                <h2>Search</h2>
-                <!-- TODO use french endpoint --!>
-                <form action="https://www.canada.ca/en/sr/srb.html" method="get" name="cse-search-box" role="search">
-                    <div class="form-group wb-srch-qry">
-                        <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
-                        <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search"
-                               value="" size="34" maxlength="170" placeholder="Search Canada.ca"/>
-                        <datalist id="wb-srch-q-ac"></datalist>
-                    </div>
-                    <div class="form-group submit">
-                        <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
-                            <span class="glyphicon-search glyphicon"></span>
-                            <span class="wb-inv">Search</span>
-                        </button>
-                    </div>
-                </form>
-            </section>
-
         </div>
     </div>
     <nav class="gcweb-menu" typeof="SiteNavigationElement">
         <div class="container">
+                <!--
             <h2 class="wb-inv">Menu</h2>
             <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span
                     class="expicon glyphicon glyphicon-chevron-down"></span></button>
@@ -111,6 +92,7 @@
                 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science
                     and innovation</a></li>
             </ul>
+            --!>
         </div>
     </nav>
     <nav id="wb-bc" property="breadcrumb">
@@ -129,80 +111,6 @@
 {% block content %}
 Hello world!
 {% endblock %}
-    <div class="pagedetails">
-        <div class="row">
-            <div class="col-sm-6 col-md-5 col-lg-4">
-                <details class="brdr-0">
-                    <summary class="btn btn-default text-center">Report a problem on this page</summary>
-                    <div class="well row">
-                        <div class="gc-rprt-prblm">
-                            <div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl">
-                                <form action="https://www.canada.ca/en.html">
-                                    <fieldset>
-                                        <legend><span class="field-name">Please select all that apply:</span></legend>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f1">
-                                                <input type="checkbox" name="problem1" value="Yes"
-                                                       id="gc-rprt-prblm-f1"/>A link, button or video is not working
-                                            </label>
-                                            <input name="problem1" type="hidden" value="No"/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f2">
-                                                <input type="checkbox" name="problem2" value="Yes"
-                                                       id="gc-rprt-prblm-f2"/>It has a spelling mistake
-                                            </label>
-                                            <input name="problem2" type="hidden" value="No"/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f3">
-                                                <input type="checkbox" name="problem3" value="Yes"
-                                                       id="gc-rprt-prblm-f3"/>Information is missing
-                                            </label>
-                                            <input name="problem3" type="hidden" value="No"/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f4">
-                                                <input type="checkbox" name="problem4" value="Yes"
-                                                       id="gc-rprt-prblm-f4"/>Information is outdated or wrong
-                                            </label>
-                                            <input name="problem4" type="hidden" value="No"/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f5">
-                                                <input type="checkbox" name="problem5" value="Yes"
-                                                       id="gc-rprt-prblm-f5"/>I can't find what I'm looking for
-                                            </label>
-                                            <input name="problem5" type="hidden" value="No"/>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label for="gc-rprt-prblm-f6">
-                                                <input type="checkbox" name="problem6" value="Yes"
-                                                       id="gc-rprt-prblm-f6"/>Other issue not in this list
-                                            </label>
-                                            <input name="problem6" type="hidden" value="No"/>
-                                        </div>
-                                    </fieldset>
-                                    <button type="submit" class="btn btn-primary wb-toggle"
-                                            data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'>
-                                        Submit
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide">
-                                <h3>Thank you for your help!</h3>
-                                <p>You will not receive a reply. For enquiries, please <a
-                                        href="https://www.canada.ca/en/contact.html">contact us</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-            </div>
-            <div class="wb-share col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5"
-                 data-wb-share='{"lnkClass": "btn btn-default btn-block"}'>
-            </div>
-        </div>
-    </div>
 </main>
 
 {% block footer %}

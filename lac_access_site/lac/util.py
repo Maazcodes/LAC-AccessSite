@@ -15,8 +15,10 @@ def get_seeds(collection_id):
     auth_string = "Token " + settings.API_KEY
     headers = { "authorization":auth_string }
 
-    #TODO handle http errors
+    #TODO handle http errors - like invalid token!
     response = requests.get(endpoint, headers=headers)
+
+    #pprint.pprint(response.json())
 
     # parse api output
     seeds = []
@@ -27,6 +29,8 @@ def get_seeds(collection_id):
         for label, data in seed["metadata"].items():
             seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
         seeds.append(seed_info)
+
+    #pprint.pprint(seeds)
 
     return seeds
 
