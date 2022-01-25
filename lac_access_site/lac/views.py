@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from lac.models import AccessSiteCollection
 from lac.util import get_seeds, get_search_results
 #from django.http import HttpResponse
 
@@ -6,32 +7,36 @@ from lac.util import get_seeds, get_search_results
 # TODO add some malformed request handling - 404 etc
 
 def index(request):
-    return render(request, 'lac/index.html', {})
+    collections = AccessSiteCollection.objects.all()
+    return render(request, 'lac/index.html', {"collections":collections})
 
 def search(request):
     query = request.GET["q"]
-    collections = request.GET["i"]
+    access_site_collection_id = request.GET["i"]
+
+    if access_site_collection_id == 'all':
+        collections = [collection.ait_collection_map for collection in AccessSiteCollection.objects.all()]
+    else:
+        collections = AccessSiteCollection.objects.get(pk=access_site_collection_id).ait_collection_map
 
     results = get_search_results(query, collections, request.GET)
     
     return render(request, 'lac/search.html', {'results':results})
 
 def search_page(request):
-    return render(request, 'lac/search-page.html', {})
+    collections = AccessSiteCollection.objects.all()
+    return render(request, 'lac/search-page.html', {"collections":collections})
 
 def advanced_search_page(request):
-    return render(request, 'lac/advanced-search-page.html', {})
+    collections = AccessSiteCollection.objects.all()
+    return render(request, 'lac/advanced-search-page.html', {"collections":collections})
 
 def collection(request, lac_collection_id):
-    #TODO render using db collections
-    #TODO distinguish between LAC and goc collections
-    if lac_collection_id == 9155:
-        collection_type = "lac"
-    elif lac_collection_id == 13693:
-        collection_type = "covid"
-    else:
-        collection_type = "goc"
-    context = {"seed_data": get_seeds(lac_collection_id), "id":lac_collection_id, "type":collection_type}
+    collection = AccessSiteCollection.objects.get(pk=lac_collection_id)
+
+    seed_data = get_seeds(collection.ait_collection_map)
+
+    context = {"seed_data": seed_data, "collection":collection}
 
     #print(context)
     return render(request, 'lac/collection.html', context)

@@ -18,9 +18,9 @@
         <br/>
         <select name='i'>
             <option value="all">All Collections</option>
-            <option value="9155">Government of Canada Collection</option>
-            <option value="6602">Truth and Reconciliation</option>
-            <option value="13693">Coronavirus/COVID-19</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
+            {% endfor %}
         </select>
         <input type="search" name="q"/>
         <button type="submit" class="btn btn-primary">Search</button>
@@ -31,33 +31,20 @@
     <b>Browse</b>
 
     <div class="container-fluid">
+        {% for collection in collections %}
+        {% if collection.feature_on_index_page %}
         <div class="row">
             <div class="col-xs-6 col-md-3 col-lg-2 text-left">
                 <img src="static/canada.jpeg" float="left"/>
             </div>
             <div class="col-md-9 col-lg-10">
-                <b><a href="/collection/9155">Government of Canada Collection</a></b>
-                <p>This collection is made up of Government of Canada websites archived by Library and Archives Canada between 2005 and the present.</p>
+                <!-- Todo internationalize -->
+                <b><a href="/collection/{{collection.id}}">{{collection.display_name_en}}</a></b>
+                <p>{{collection.description_en}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 col-lg-2 text-left">
-                <img src="static/canada.jpeg" float="left"/>
-            </div>
-            <div class="col-md-9 col-lg-10">
-                <b><a href="/collection/6602">Truth and Reconciliation Collection</a></b>
-                <p>Library and Archives Canada’s (LAC) Truth and Reconciliation Commission Web Archive provides access to archival copies of the websites of organizations connected with the Truth and Reconciliation Commission of Canada (TRC), either as active partners at national events or through initiatives to support commemoration. The collection was curated in collaboration with the University of Winnipeg Library, the University of Manitoba Libraries, and the National Centre for Truth and Reconciliation (NCTR).</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-lg-2 text-left">
-                <img src="static/canada.jpeg" float="left"/>
-            </div>
-            <div class="col-md-9 col-lg-10">
-                <b><a href="/collection/13693">Coronavirus/Covid-19</a></b>
-                <p>This collection was created to preserve web content related to the ongoing response and effect of the Novel Coronavirus (Covid-19) pandemic. </p>
-            </div>
-        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 
 {% endblock %}

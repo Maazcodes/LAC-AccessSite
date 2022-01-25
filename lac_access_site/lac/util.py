@@ -10,37 +10,37 @@ import pprint
 
 
 # use http to fetch results from the partner site's rest api
-def get_seeds(collection_id):
-    endpoint = settings.API_ROOT + '/seed?collection=' + str(collection_id)
-    auth_string = "Token " + settings.API_KEY
-    headers = { "authorization":auth_string }
-
-    #TODO handle http errors - like invalid token!
-    response = requests.get(endpoint, headers=headers)
-
-    #pprint.pprint(response.json())
-
-    # parse api output
+def get_seeds(collection_ids):
     seeds = []
-    for seed in response.json():
-        seed_info = {"url":seed["url"]}
 
-        #TODO handle diff data structures
-        for label, data in seed["metadata"].items():
-            seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
-        seeds.append(seed_info)
+    for ait_collection_id in collection_ids:
+        endpoint = settings.API_ROOT + '/seed?collection=' + str(ait_collection_id)
+        auth_string = "Token " + settings.API_KEY
+        headers = { "authorization":auth_string }
+
+        #TODO handle http errors - like invalid token!
+        response = requests.get(endpoint, headers=headers)
+
+        #pprint.pprint(response.json())
+
+        # parse api output
+        for seed in response.json():
+            seed_info = {"url":seed["url"]}
+
+            #concatenate metadata entries with multiple values
+            for label, data in seed["metadata"].items():
+                seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
+
+            seeds.append(seed_info)
 
     #pprint.pprint(seeds)
 
     return seeds
 
-def get_search_results(query,collection_ids="all", advanced=dict()):
+def get_search_results(query,collection_ids, advanced=dict()):
     endpoint = settings.SEARCH_ROOT 
     params = {"fmt":"json","q":query}
 
-    if collection_ids=="all":
-        # TODO derive from db models
-        collection_ids = [6602,9155]
     params["i"]=collection_ids
 
     # handle params from the advanced search interface
@@ -65,8 +65,9 @@ def get_search_results(query,collection_ids="all", advanced=dict()):
     http_session.mount('https://', adapter)
 
     #debugging 
-    print("Sending search query")
-    http.client.HTTPConnection.debuglevel = 1
+    if settings.DEBUG:
+        print("Sending search query")
+        http.client.HTTPConnection.debuglevel = 1
 
     response = http_session.get(endpoint, params=params)
 

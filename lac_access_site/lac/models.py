@@ -15,4 +15,14 @@ class AccessSiteCollection(models.Model):
 
     image = models.ImageField(default='canada.jpg')
 
+    LAC = 'lac'
+    GOC = 'goc'
+
+    COLLECTION_TYPE_CHOICES = [(LAC, 'Library Archives Canada'),(GOC, 'Government of Canada')]
+
+    collection_type = models.CharField(choices=COLLECTION_TYPE_CHOICES, max_length=3, default=LAC)
+
     ait_collection_map = models.JSONField(default=list)
+
+    def __str__(self):
+        return self.display_name_fr + " | " + self.display_name_en 
