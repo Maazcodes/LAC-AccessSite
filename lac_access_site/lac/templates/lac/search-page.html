@@ -8,10 +8,10 @@
         <a href="/advanced-search-results">Advanced Search</a>
         <br/>
         <select name='i'>
-            <option value="all">All Collections</option>
-            <option value="9155">Government of Canada Collection</option>
-            <option value="6602">Truth and Reconciliation</option>
-            <option value="13693">Coronavirus/COVID-19</option>
+              <option value="all">All Collections</option>
+              {% for collection in collections %}
+              <option value="{{collection.id}}">{{collection.display_name_en}}</option>
+              {% endfor %}
         </select>
         <input type="search" name="q"/>
         <button type="submit" class="btn btn-primary">Search</button>
