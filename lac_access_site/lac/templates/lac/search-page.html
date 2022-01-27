@@ -1,17 +1,39 @@
 {% extends "./gcweb-base.html" %}
+{% load i18n %}
 
 {% block content %}
-    <form method="get" action="search-results" class="form-inline">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% if LANGUAGE_CODE == "en" %}
+    <form method="get" action="/en/search-results" class="form-inline">
+    {% endif %}
+    {% if LANGUAGE_CODE == "fr" %}
+    <form method="get" action="/fr/search-results" class="form-inline">
+    {% endif %}
         <div class="form-group">
         <label><b>Search</b></label>
         <br/>
-        <a href="/advanced-search-results">Advanced Search</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == "en" %}
+        <a href="/en/advanced-search-results">Advanced Search</a>
+        {% endif %}
+        {% if LANGUAGE_CODE == "fr" %}
+        <a href="/fr/advanced-search-results">Recherche Avancée</a>
+        {% endif %}
         <br/>
         <select name='i'>
-              <option value="all">All Collections</option>
-              {% for collection in collections %}
-              <option value="{{collection.id}}">{{collection.display_name_en}}</option>
-              {% endfor %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == "en" %}
+            <option value="all">All Collections</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
+            {% endfor %}
+            {% endif %}
+            {% if LANGUAGE_CODE == "fr" %}
+            <option value="all">Toutes les Collections</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
+            {% endfor %}
+            {% endif %}
         </select>
         <input type="search" name="q"/>
         <button type="submit" class="btn btn-primary">Search</button>

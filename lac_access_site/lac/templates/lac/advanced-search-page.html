@@ -1,13 +1,29 @@
 {% extends "./gcweb-base.html" %}
+{% load i18n %}
 
 {% block content %}
-    <form method="get" action="advanced-search-results" class="form-inline">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% if LANGUAGE_CODE == "en" %}
+    <form method="get" action="/en/advanced-search-results" class="form-inline">
+    {% endif %}
+    {% if LANGUAGE_CODE == "fr" %}
+    <form method="get" action="/fr/advanced-search-results" class="form-inline">
+    {% endif %}
         <label for="collectionSelect">Select Collection:</label>
         <select id="collectionSelect" name='i'>
-                <option value="all">All Collections</option>
-                {% for collection in collections %}
-                <option value="{{collection.id}}">{{collection.display_name_en}}</option>
-                {% endfor %}
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == "en" %}
+            <option value="all">All Collections</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
+            {% endfor %}
+            {% endif %}
+            {% if LANGUAGE_CODE == "fr" %}
+            <option value="all">Toutes les Collections</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
+            {% endfor %}
+            {% endif %}
         </select>
         <br/>
 

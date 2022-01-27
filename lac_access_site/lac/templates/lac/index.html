@@ -1,4 +1,5 @@
 {% extends "./gcweb-base.html" %}
+{% load i18n %}
 
 {% block content %}
     <h1 id="wb-cont" property="name">Government of Canada Web Archive Prototype</h1>
@@ -9,18 +10,39 @@
         consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
         sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    
-    <form method="get" action="search-results" class="form-inline">
+
+    {% get_current_language as LANGUAGE_CODE %}
+    {% if LANGUAGE_CODE == "en" %}
+    <form method="get" action="/en/search-results" class="form-inline">
+    {% endif %}
+    {% if LANGUAGE_CODE == "fr" %}
+    <form method="get" action="/fr/search-results" class="form-inline">
+    {% endif %}
         <div class="form-group">
         <label><b>Search</b></label>
         <br/>
-        <a href="/advanced-search-results">Advanced Search</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == "en" %}
+        <a href="/en/advanced-search-results">Advanced Search</a>
+        {% endif %}
+        {% if LANGUAGE_CODE == "fr" %}
+        <a href="/fr/advanced-search-results">Recherche Avancée</a>
+        {% endif %}
         <br/>
         <select name='i'>
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == "en" %}
             <option value="all">All Collections</option>
             {% for collection in collections %}
             <option value="{{collection.id}}">{{collection.display_name_en}}</option>
             {% endfor %}
+            {% endif %}
+            {% if LANGUAGE_CODE == "fr" %}
+            <option value="all">Toutes les Collections</option>
+            {% for collection in collections %}
+            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
+            {% endfor %}
+            {% endif %}
         </select>
         <input type="search" name="q"/>
         <button type="submit" class="btn btn-primary">Search</button>
@@ -38,9 +60,15 @@
                 <img src="static/canada.jpeg" float="left"/>
             </div>
             <div class="col-md-9 col-lg-10">
-                <!-- Todo internationalize -->
-                <b><a href="/collection/{{collection.id}}">{{collection.display_name_en}}</a></b>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "en" %}
+                <b><a href="./collection/{{collection.id}}">{{collection.display_name_en}}</a></b>
                 <p>{{collection.description_en}}</p>
+                {% endif %}
+                {% if LANGUAGE_CODE == "fr" %}
+                <b><a href="./collection/{{collection.id}}">{{collection.display_name_fr}}</a></b>
+                <p>{{collection.description_fr}}</p>
+                {% endif %}
             </div>
         </div>
         {% endif %}

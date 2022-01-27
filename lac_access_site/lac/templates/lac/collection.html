@@ -1,4 +1,5 @@
 {% extends "./gcweb-base.html" %}
+{% load i18n %}
 
 {% block content %}
     <h1 id="wb-cont" property="name">GoC/LAC Web Archive Prototype</h1>
@@ -8,16 +9,35 @@
             <img src="/static/canada.jpeg" float="left"/>
         </div>
         <div class="col-md-9 col-lg-10">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == "en" %}
             <b><a href="#">{{collection.display_name_en}}</a></b>
             <p>{{collection.description_en}}</p>
+            {% endif %}
+            {% if LANGUAGE_CODE == "fr" %}
+            <b><a href="#">{{collection.display_name_fr}}</a></b>
+            <p>{{collection.description_fr}}</p>
+            {% endif %}
         </div>
     </div>
 
-    <form method="get" action="/search-results" class="form-inline">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% if LANGUAGE_CODE == "en" %}
+    <form method="get" action="/en/search-results" class="form-inline">
+    {% endif %}
+    {% if LANGUAGE_CODE == "fr" %}
+    <form method="get" action="/fr/search-results" class="form-inline">
+    {% endif %}
         <div class="form-group"
         <label><b>Search</b></label>
         <br/>
-        <a href="advanced-search-page.html">Advanced Search</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% if LANGUAGE_CODE == "en" %}
+        <a href="/en/advanced-search-results">Advanced Search</a>
+        {% endif %}
+        {% if LANGUAGE_CODE == "fr" %}
+        <a href="/fr/advanced-search-results">Recherche Avancée</a>
+        {% endif %}
         <br/>
         <input type="search" name="q"/>
         <input type="hidden" name="i" value="{{collection.id}}"/>
