@@ -90,6 +90,7 @@ Hello world!
 
     <div class="landscape">
         <nav class="container wb-navcurr">
+    {% get_current_language as LANGUAGE_CODE %}
     {%if LANGUAGE_CODE == 'en'%}
             <h2 class="wb-inv">About government</h2>
             <ul class="list-unstyled colcount-sm-2 colcount-md-3">

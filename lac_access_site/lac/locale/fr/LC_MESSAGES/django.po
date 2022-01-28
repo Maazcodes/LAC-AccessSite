@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 09:05+0000\n"
+"POT-Creation-Date: 2022-01-28 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,9 +15,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: lac/templates/lac/advanced-search-page.html:12
+#, fuzzy
+#| msgid "All Collections"
+msgid "Select Collection:"
+msgstr "Sélectionner des Collections"
+
+#: lac/templates/lac/advanced-search-page.html:30
+msgid "Find these words:"
+msgstr "Trouvez ces mots:"
+
+#: lac/templates/lac/advanced-search-page.html:34
+msgid "None of these words:"
+msgstr "Aucun de ces mots:"
+
+#: lac/templates/lac/advanced-search-page.html:38
+msgid "This exact phrase:"
+msgstr "Cette phrase exacte:"
+
+#: lac/templates/lac/advanced-search-page.html:42
+msgid "Within this website:"
+msgstr "Dans ce site Web:"
+
+#: lac/templates/lac/advanced-search-page.html:47
+#, fuzzy
+#| msgid "Filetype:"
+msgid "File type:"
+msgstr "Type de Fichier:"
+
+#: lac/templates/lac/advanced-search-page.html:52
+msgid "Start date:"
+msgstr "Date de début:"
+
+#: lac/templates/lac/advanced-search-page.html:56
+msgid "End date:"
+msgstr "Date de clôture:"
+
+#: lac/templates/lac/advanced-search-page.html:60
+#: lac/templates/lac/search-bar.html:6 lac/templates/lac/search-bar.html:33
+msgid "Search"
+msgstr "Recherche"
+
+#: lac/templates/lac/advanced-search-page.html:63
+#: lac/templates/lac/search-page.html:7
+msgid "Search Results (Prototype)"
+msgstr "Résultats de la Recherche (Prototype)"
+
+#: lac/templates/lac/advanced-search-page.html:67
+#: lac/templates/lac/search-page.html:11
+msgid "Loading search results..."
+msgstr "Chargement des résultats de recherche..."
+
 #: lac/templates/lac/collection.html:5
 msgid "GoC/LAC Web Archive Prototype"
-msgstr ""
+msgstr "Prototype d'Archives Web du GOC/BAC"
 
 #: lac/templates/lac/collection.html:28 lac/templates/lac/collection.html:31
 msgid "Filter"
@@ -44,7 +96,9 @@ msgid "Topic"
 msgstr "Sujet"
 
 #: lac/templates/lac/collection.html:43
-msgid "Language"
+#, fuzzy
+#| msgid "Language"
+msgid "Lang"
 msgstr "Langue"
 
 #: lac/templates/lac/collection.html:49
@@ -84,15 +138,13 @@ msgstr "Prototype d'Archives Web du Gouvernement du Canada"
 #: lac/templates/lac/index.html:8
 msgid ""
 "Welcome to the Web Archive Access Portal of Libraries and Archives Canada"
-msgstr "Bienvenue sur le Portail d'accès aux archives Web de Bibliothèques et Archives Canada"
+msgstr ""
+"Bienvenue sur le Portail d'accès aux archives Web de Bibliothèques et "
+"Archives Canada"
 
 #: lac/templates/lac/index.html:13
 msgid "Browse"
 msgstr "Parcourir"
-
-#: lac/templates/lac/search-bar.html:6 lac/templates/lac/search-bar.html:33
-msgid "Search"
-msgstr "Recherche"
 
 #: lac/templates/lac/search-bar.html:9
 msgid "Advanced Search"
@@ -101,14 +153,6 @@ msgstr "Recherche Avancée"
 #: lac/templates/lac/search-bar.html:19
 msgid "All Collections"
 msgstr "Toutes les Collections"
-
-#: lac/templates/lac/search-page.html:7
-msgid "Search Results (Prototype)"
-msgstr "Résultats de la Recherche (Prototype)"
-
-#: lac/templates/lac/search-page.html:11
-msgid "Loading search results..."
-msgstr "Chargement des résultats de recherche..."
 
 #: lac/templates/lac/search.html:10
 msgid "Filetype:"
