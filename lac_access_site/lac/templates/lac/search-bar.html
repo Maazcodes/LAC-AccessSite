@@ -1,0 +1,34 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<form method="get" action="/{{LANGUAGE_CODE}}/search-results" class="form-inline">
+    <div class="form-group">
+    <label><b>{% translate "Search" %}</b></label>
+
+    <br/>
+    <a href="/{{LANGUAGE_CODE}}/advanced-search-results">{% translate "Advanced Search" %}</a>
+    
+    <br/>
+
+    {% comment %}For individual collection pages {% endcomment %}
+    {% if collection %}
+    <input type="hidden" name="i" value="{{collection.id}}"/>
+    {% else %}
+    <select name='i'>
+        <option value="all">{% translate "All Collections" %}</option>
+        {% for collection in collections %}
+        <option value="{{collection.id}}">
+        {% if LANGUAGE_CODE == "en" %}
+        {{collection.display_name_en}}
+        {% else %}
+        {{collection.display_name_fr}}
+        {% endif %}
+        </option>
+        {% endfor %}
+    </select>
+    {% endif %}
+
+    <input type="search" name="q"/>
+    <button type="submit" class="btn btn-primary">{% translate "Search" %}</button>
+    </div>
+</form>
