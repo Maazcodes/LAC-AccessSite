@@ -1,11 +1,13 @@
+{% load i18n %}
 {% block header %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>Canadian Web Archive Prototype</title>
+    <title>{% translate "Canadian Web Archive Prototype" %}</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description" content=" "/>
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon"/>
@@ -19,8 +21,8 @@
 
 <nav>
     <ul id="wb-tphp">
-        <li class="wb-slc"><a class="wb-sl" href="#">Skip to main content</a></li>
-        <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to About this site</a>
+            <li class="wb-slc"><a class="wb-sl" href="#">{% translate "Skip to main content" %}</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">{% translate "Skip to About this site"%}</a>
         </li>
     </ul>
 </nav>
@@ -29,19 +31,26 @@
     <div id="wb-bnr" class="container">
         <div class="row">
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
-                <h2 class="wb-inv">Language selection</h2>
+                    <h2 class="wb-inv">{% translate "Language selection" %}</h2>
                 <ul class="list-inline mrgn-bttm-0">
                     <li>
-                        <a lang="fr" hreflang="fr" href="fr.html">
-                            <span class="hidden-xs">Français (en construction)</span>
+                        {% if LANGUAGE_CODE == 'en' %}
+                        <a lang="fr" hreflang="fr" href="/fr/{{request.path|slice:"4:"}}">
+                            <span class="hidden-xs">Français</span>
                             <abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
                         </a>
+                        {% else %}
+                        <a lang="en" hreflang="en" href="/en/{{request.path|slice:"4:"}}">
+                            <span class="hidden-xs">English</span>
+                            <abbr title="English" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
+                        </a>
+                        {%endif%}
                     </li>
                 </ul>
             </section>
 
             <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-                <a href="/" property="url">
+                    <a href="/{{LANGUAGE_CODE}}" property="url">
                     <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
                          alt="Government of Canada" property="logo"/><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
                 </a>
@@ -52,51 +61,13 @@
 
         </div>
     </div>
+    
     <nav class="gcweb-menu" typeof="SiteNavigationElement">
         <div class="container">
-                <!--
-            <h2 class="wb-inv">Menu</h2>
-            <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span
-                    class="expicon glyphicon glyphicon-chevron-down"></span></button>
-            <ul role="menu" aria-orientation="vertical"
-                data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html">
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and
-                    the workplace</a></li>
-                <li role="presentation"><a role="menuitem"
-                                           href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration
-                    and citizenship</a></li>
-                <li role="presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business
-                    and industry</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a>
-                </li>
-                <li role="presentation"><a role="menuitem"
-                                           href="https://www.canada.ca/en/services/health.html">Health</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a>
-                </li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/environment.html">Environment
-                    and natural resources</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National
-                    security and defence</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture,
-                    history and sport</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing,
-                    justice and emergencies</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport
-                    and infrastructure</a></li>
-                <li role="presentation"><a role="menuitem"
-                                           href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and
-                    the world</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money
-                    and finances</a></li>
-                <li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science
-                    and innovation</a></li>
-            </ul>
-            --!>
         </div>
     </nav>
     <nav id="wb-bc" property="breadcrumb">
-        <h2>You are here:</h2>
+            <h2>{% translate "You are here:"%}</h2>
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
@@ -114,10 +85,12 @@ Hello world!
 </main>
 
 {% block footer %}
+<br/>
 <footer id="wb-info">
 
     <div class="landscape">
         <nav class="container wb-navcurr">
+    {%if LANGUAGE_CODE == 'en'%}
             <h2 class="wb-inv">About government</h2>
             <ul class="list-unstyled colcount-sm-2 colcount-md-3">
                 <li><a href="https://www.canada.ca/en/contact.html">Contact us</a></li>
@@ -146,6 +119,33 @@ Hello world!
                         <li><a href="https://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
                         <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
                         <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+    {% else %}
+<h2 class="wb-inv">Au sujet du gouvernement</h2>
+            <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                         <li><a href="/fr/contact.html">Contactez-nous</a></li>
+                        <li><a href="/fr/gouvernement/min.html">Ministères et organismes</a></li>
+                        <li><a href="/fr/gouvernement/fonctionpublique.html">Fonction publique et force militaire</a></li>
+                        <li><a href="/fr/nouvelles.html">Nouvelles</a></li>
+                        <li><a href="/fr/gouvernement/systeme/lois.html">Traités, lois et règlements</a></li>
+                        <li><a href="/fr/transparence/rapports.html">Rapports à l&#39;échelle du gouvernement</a></li>
+                        <li><a href="https://pm.gc.ca/fr">Premier ministre</a></li>
+                        <li><a href="/fr/gouvernement/systeme.html">À propos du gouvernement</a></li>
+                                           <li><a href="http://ouvert.canada.ca/">Gouvernement ouvert</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="brand">
+            <div class="container">
+                <div class="row">
+                        <nav class="col-md-9 col-lg-10 ftr-urlt-lnk">
+                        <h2 class="wb-inv">À propos de ce site</h2>
+                        <ul>
+                                    <li><a href="/fr/sociaux.html">Médias sociaux</a></li>
+                                    <li><a href="/fr/mobile.html">Applications mobiles</a></li>
+                                    <li><a href="/fr/gouvernement/a-propos.html">À propos de Canada.ca</a></li>
+                                    <li><a href="/fr/transparence/avis.html">Avis</a></li>
+                                    <li><a href="/fr/transparence/confidentialite.html">Confidentialité</a></li>
+    {% endif %}
                     </ul>
                 </nav>
                 <div class="col-xs-6 visible-sm visible-xs tofpg">

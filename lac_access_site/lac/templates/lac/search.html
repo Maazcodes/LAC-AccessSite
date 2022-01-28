@@ -7,15 +7,15 @@
         {%autoescape off%}
         <p>{{item.description }}</p>
         {%endautoescape%}
-        <b>Filetype:</b> {{item.type}}
+        <b>{% translate "Filetype:"%}</b> {{item.type}}
         <br/>
-        <b>Site:</b> {{item.site}}
+        <b>{% translate "Site:"%}</b> {{item.site}}
         <br/>
-        <b>Date:</b> {{item.date}}
+        <b>{% translate "Date:"%}</b> {{item.date}}
         <hr/>
         {%endfor%}
 </div>
 
 {% else %}
-<h2>No search results!</h2>
+<h2>{% translate "No search results!"%}</h2>
 {% endif %}

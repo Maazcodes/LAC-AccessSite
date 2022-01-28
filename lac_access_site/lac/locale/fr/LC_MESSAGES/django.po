@@ -1,0 +1,135 @@
+# Translations for the LAC access site
+# Pravin Visakan, pravin@archive.org, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-28 09:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: lac/templates/lac/collection.html:5
+msgid "GoC/LAC Web Archive Prototype"
+msgstr ""
+
+#: lac/templates/lac/collection.html:28 lac/templates/lac/collection.html:31
+msgid "Filter"
+msgstr "Filtre"
+
+#: lac/templates/lac/collection.html:30
+msgid "(Under Construction)"
+msgstr "(En Construction)"
+
+#: lac/templates/lac/collection.html:36
+msgid "Collection Page"
+msgstr "Collection Page"
+
+#: lac/templates/lac/collection.html:40 lac/templates/lac/collection.html:48
+msgid "Title"
+msgstr "Titre"
+
+#: lac/templates/lac/collection.html:41 lac/templates/lac/collection.html:50
+msgid "URL"
+msgstr "URL"
+
+#: lac/templates/lac/collection.html:42
+msgid "Topic"
+msgstr "Sujet"
+
+#: lac/templates/lac/collection.html:43
+msgid "Language"
+msgstr "Langue"
+
+#: lac/templates/lac/collection.html:49
+msgid "Department"
+msgstr "Département"
+
+#: lac/templates/lac/collection.html:59 lac/templates/lac/collection.html:60
+#: lac/templates/lac/collection.html:67 lac/templates/lac/collection.html:69
+#: lac/templates/lac/collection.html:70
+msgid "None"
+msgstr "Aucune"
+
+#: lac/templates/lac/gcweb-base.html:10
+msgid "Canadian Web Archive Prototype"
+msgstr "Prototype d'Archives Web Canadiennes"
+
+#: lac/templates/lac/gcweb-base.html:24
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
+#: lac/templates/lac/gcweb-base.html:25
+msgid "Skip to About this site"
+msgstr "Passer à Propos de ce site"
+
+#: lac/templates/lac/gcweb-base.html:34
+msgid "Language selection"
+msgstr "Sélection de la langue"
+
+#: lac/templates/lac/gcweb-base.html:70
+msgid "You are here:"
+msgstr "Vous êtes ici:"
+
+#: lac/templates/lac/index.html:6
+msgid "Government of Canada Web Archive Prototype"
+msgstr "Prototype d'Archives Web du Gouvernement du Canada"
+
+#: lac/templates/lac/index.html:8
+msgid ""
+"Welcome to the Web Archive Access Portal of Libraries and Archives Canada"
+msgstr "Bienvenue sur le Portail d'accès aux archives Web de Bibliothèques et Archives Canada"
+
+#: lac/templates/lac/index.html:13
+msgid "Browse"
+msgstr "Parcourir"
+
+#: lac/templates/lac/search-bar.html:6 lac/templates/lac/search-bar.html:33
+msgid "Search"
+msgstr "Recherche"
+
+#: lac/templates/lac/search-bar.html:9
+msgid "Advanced Search"
+msgstr "Recherche Avancée"
+
+#: lac/templates/lac/search-bar.html:19
+msgid "All Collections"
+msgstr "Toutes les Collections"
+
+#: lac/templates/lac/search-page.html:7
+msgid "Search Results (Prototype)"
+msgstr "Résultats de la Recherche (Prototype)"
+
+#: lac/templates/lac/search-page.html:11
+msgid "Loading search results..."
+msgstr "Chargement des résultats de recherche..."
+
+#: lac/templates/lac/search.html:10
+msgid "Filetype:"
+msgstr "Type de Fichier:"
+
+#: lac/templates/lac/search.html:12
+msgid "Site:"
+msgstr "Le site:"
+
+#: lac/templates/lac/search.html:14
+msgid "Date:"
+msgstr "Date:"
+
+#: lac/templates/lac/search.html:20
+msgid "No search results!"
+msgstr "Aucun résultat de recherche!"
+
+#: lac_access_site/settings.py:29
+msgid "English"
+msgstr "Anglais"
+
+#: lac_access_site/settings.py:30
+msgid "French"
+msgstr "Français"

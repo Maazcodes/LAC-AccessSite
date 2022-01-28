@@ -2,70 +2,13 @@
 {% load i18n %}
 
 {% block content %}
-    {% get_current_language as LANGUAGE_CODE %}
-    {% if LANGUAGE_CODE == "en" %}
-    <form method="get" action="/en/search-results" class="form-inline">
-    {% endif %}
-    {% if LANGUAGE_CODE == "fr" %}
-    <form method="get" action="/fr/search-results" class="form-inline">
-    {% endif %}
-        <div class="form-group">
-        <label><b>Search</b></label>
-        <br/>
-        {% get_current_language as LANGUAGE_CODE %}
-        {% if LANGUAGE_CODE == "en" %}
-        <a href="/en/advanced-search-results">Advanced Search</a>
-        {% endif %}
-        {% if LANGUAGE_CODE == "fr" %}
-        <a href="/fr/advanced-search-results">Recherche Avancée</a>
-        {% endif %}
-        <br/>
-        <select name='i'>
-            {% get_current_language as LANGUAGE_CODE %}
-            {% if LANGUAGE_CODE == "en" %}
-            <option value="all">All Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
-            {% endfor %}
-            {% endif %}
-            {% if LANGUAGE_CODE == "fr" %}
-            <option value="all">Toutes les Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>
-        <input type="search" name="q"/>
-        <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
 
-    <h1 id="wb-cont" property="name">Search Results (Prototype)</h1>
+    {% include "./search-bar.html"%}
+    <h1 id="wb-cont" property="name">{% translate "Search Results (Prototype)"%}</h1>
     
     <div class="row">
-        <!--
-        <div class="col-sm-6 col-md-5 col-lg-4">    
-                <div class="filterbox" >
-                        <h3>Filter Results</h3>
-                                <form method="post" action="#" class="form-inline">
-                                <div class="form-group">
-                                        <label>Date Range:</label> 
-                                        <input class="form-control"/>
-                                        <label>Domain: </label> 
-                                        <input class="form-control"/>
-                                        <label>Collection: </label> 
-                                        <input class="form-control"/>
-                                        <label>File Type: </label> 
-                                        <input class="form-control"/>
-                                        <button type="submit" class="btn btn-primary">Filter</button>
-                                </div>
-                                </form>
-                </div>
-        </div>
-        --!>
-
         <div id="results">
-        <h2>Loading search results...</h2>
+                <h2>{% translate "Loading search results..."%}</h2>
         </div>
         <script src="static/search.js"></script>
     </div>

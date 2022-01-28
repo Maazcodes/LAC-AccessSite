@@ -1,56 +1,16 @@
 {% extends "./gcweb-base.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
-    <h1 id="wb-cont" property="name">Government of Canada Web Archive Prototype</h1>
+<h1 id="wb-cont" property="name">{% translate "Government of Canada Web Archive Prototype" %}</h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>{% translate "Welcome to the Web Archive Access Portal of Libraries and Archives Canada"%}</p>
 
-    {% get_current_language as LANGUAGE_CODE %}
-    {% if LANGUAGE_CODE == "en" %}
-    <form method="get" action="/en/search-results" class="form-inline">
-    {% endif %}
-    {% if LANGUAGE_CODE == "fr" %}
-    <form method="get" action="/fr/search-results" class="form-inline">
-    {% endif %}
-        <div class="form-group">
-        <label><b>Search</b></label>
-        <br/>
-        {% get_current_language as LANGUAGE_CODE %}
-        {% if LANGUAGE_CODE == "en" %}
-        <a href="/en/advanced-search-results">Advanced Search</a>
-        {% endif %}
-        {% if LANGUAGE_CODE == "fr" %}
-        <a href="/fr/advanced-search-results">Recherche Avancée</a>
-        {% endif %}
-        <br/>
-        <select name='i'>
-            {% get_current_language as LANGUAGE_CODE %}
-            {% if LANGUAGE_CODE == "en" %}
-            <option value="all">All Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
-            {% endfor %}
-            {% endif %}
-            {% if LANGUAGE_CODE == "fr" %}
-            <option value="all">Toutes les Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>
-        <input type="search" name="q"/>
-        <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
+    {% include "./search-bar.html" %}
 
     <br/>
-    <b>Browse</b>
+    <b>{% translate "Browse"%}</b>
 
     <div class="container-fluid">
         {% for collection in collections %}

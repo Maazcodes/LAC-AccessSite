@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-    <h1 id="wb-cont" property="name">GoC/LAC Web Archive Prototype</h1>
+<h1 id="wb-cont" property="name">{% translate "GoC/LAC Web Archive Prototype"%}</h1>
 
     <div class="row">
         <div class="col-xs-6 col-md-3 col-lg-2 text-left">
@@ -21,55 +21,33 @@
         </div>
     </div>
 
-    {% get_current_language as LANGUAGE_CODE %}
-    {% if LANGUAGE_CODE == "en" %}
-    <form method="get" action="/en/search-results" class="form-inline">
-    {% endif %}
-    {% if LANGUAGE_CODE == "fr" %}
-    <form method="get" action="/fr/search-results" class="form-inline">
-    {% endif %}
-        <div class="form-group"
-        <label><b>Search</b></label>
-        <br/>
-        {% get_current_language as LANGUAGE_CODE %}
-        {% if LANGUAGE_CODE == "en" %}
-        <a href="/en/advanced-search-results">Advanced Search</a>
-        {% endif %}
-        {% if LANGUAGE_CODE == "fr" %}
-        <a href="/fr/advanced-search-results">Recherche Avancée</a>
-        {% endif %}
-        <br/>
-        <input type="search" name="q"/>
-        <input type="hidden" name="i" value="{{collection.id}}"/>
-        <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
+    {% include "./search-bar.html" %}
 
     <form method="post" action="#" class="form-inline">
         <div class="form-group"
-        <label><b>Filter</b></label>
+                <label><b>{% translate "Filter"%}</b></label>
         <br/>
-        <input class="form-control" placeholder="(Under Construction)"/>
-        <button type="submit" class="btn btn-primary">Filter</button>
+        <input class="form-control" placeholder="{% translate "(Under Construction)"%}"/>
+        <button type="submit" class="btn btn-primary">{% translate "Filter"%}</button>
         </div>
     </form>
 
     <table class="table table-striped">
-        <caption>Collection Page</caption>
+        <caption>{% translate "Collection Page"%}</caption>
         <thead>
         {% if collection.collection_type == "lac"%}
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">URL</th>
-            <th scope="col">Topic</th>
-            <th scope="col">Lang</th>
+            <th scope="col">{% translate "Title"%}</th>
+            <th scope="col">{% translate "URL"%}</th>
+            <th scope="col">{% translate "Topic"%}</th>
+            <th scope="col">{% translate "Lang"%}</th>
         </tr>
         {% endif %}
         {% if collection.collection_type == "goc"%}
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Department</th>
-            <th scope="col">URL</th>
+            <th scope="col">{% translate "Title"%}</th>
+            <th scope="col">{% translate "Department"%}</th>
+            <th scope="col">{% translate "URL"%}</th>
         </tr>
         {% endif %}
         </thead>
@@ -78,18 +56,18 @@
         {% if collection.collection_type == "goc"%}
         {% for seed in seed_data %}
         <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
-            <td>{% if seed.department%}{{seed.department}}{% else %}None{% endif %}</td>
+            <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
+            <td>{% if seed.department%}{{seed.department}}{% else %}{% translate "None"%}{% endif %}</td>
             <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
         </tr>
         {% endfor %}
         {% else %}
         {% for seed in seed_data %}
         <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}None{% endif %}</td>
+            <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
             <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
-            <td>{% if seed.subject%}{{seed.subject}}{% else %}None{% endif %}</td>
-            <td>{% if seed.language %}{{seed.language}}{% else %}None{% endif %}</td>
+            <td>{% if seed.subject%}{{seed.subject}}{% else %}{% translate "None"%}{% endif %}</td>
+            <td>{% if seed.language %}{{seed.language}}{% else %}{% translate "None"%}{% endif %}</td>
         </tr>
         {% endfor %}
         {% endif %}
