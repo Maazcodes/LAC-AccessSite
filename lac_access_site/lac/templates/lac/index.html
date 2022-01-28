@@ -22,11 +22,11 @@
             <div class="col-md-9 col-lg-10">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% if LANGUAGE_CODE == "en" %}
-                <b><a href="./collection/{{collection.id}}">{{collection.display_name_en}}</a></b>
+                <b><a href="/en/collection/{{collection.id}}">{{collection.display_name_en}}</a></b>
                 <p>{{collection.description_en}}</p>
                 {% endif %}
                 {% if LANGUAGE_CODE == "fr" %}
-                <b><a href="./collection/{{collection.id}}">{{collection.display_name_fr}}</a></b>
+                <b><a href="/fr/collection/{{collection.id}}">{{collection.display_name_fr}}</a></b>
                 <p>{{collection.description_fr}}</p>
                 {% endif %}
             </div>

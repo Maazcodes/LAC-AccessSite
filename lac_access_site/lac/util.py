@@ -14,7 +14,7 @@ def get_seeds(collection_ids):
     seeds = []
 
     for ait_collection_id in collection_ids:
-        endpoint = settings.API_ROOT + '/seed?collection=' + str(ait_collection_id)
+        endpoint = settings.API_ROOT + 'seed?collection=' + str(ait_collection_id)
         auth_string = "Token " + settings.API_KEY
         headers = { "authorization":auth_string }
 
