@@ -12,7 +12,7 @@
     <meta name="description" content=" "/>
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon"/>
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css"/>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="/static/styles.css"/>
     <noscript>
         <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css"/>
     </noscript>
@@ -61,16 +61,16 @@
 
         </div>
     </div>
-    
-    <nav class="gcweb-menu" typeof="SiteNavigationElement">
-        <div class="container">
-        </div>
-    </nav>
+
+    <div class="ait-header">
+    </div>
+
     <nav id="wb-bc" property="breadcrumb">
-            <h2>{% translate "You are here:"%}</h2>
         <div class="container">
+            <h2>{% translate "You are here:"%}</h2>
             <ol class="breadcrumb">
-                <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+                    <li><a href="/">{% translate "LAC Web Archive Index" %}</a></li>
+                    {%block breadcrumb%}{%endblock%}
             </ol>
         </div>
     </nav>
@@ -161,6 +161,9 @@ Hello world!
     </div>
 </footer>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+        integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB"
+        crossorigin="anonymous"></script>
 <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
 <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 </body>

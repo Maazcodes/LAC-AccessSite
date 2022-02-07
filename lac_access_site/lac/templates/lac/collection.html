@@ -1,6 +1,10 @@
 {% extends "./gcweb-base.html" %}
 {% load i18n %}
 
+{% block breadcrumb %}
+<li><a href="#">{{collection.display_name_en}} | {{collection.display_name_fr}}</a></li>
+{% endblock %}
+
 {% block content %}
 <h1 id="wb-cont" property="name">{% translate "GoC/LAC Web Archive Prototype"%}</h1>
 
@@ -23,16 +27,7 @@
 
     {% include "./search-bar.html" %}
 
-    <form method="post" action="#" class="form-inline">
-        <div class="form-group"
-                <label><b>{% translate "Filter"%}</b></label>
-        <br/>
-        <input class="form-control" placeholder="{% translate "(Under Construction)"%}"/>
-        <button type="submit" class="btn btn-primary">{% translate "Filter"%}</button>
-        </div>
-    </form>
-
-    <table class="table table-striped">
+    <table class="wb-tables table table-striped table-hover" data-wb-tables='{ "ordering" : false }'>
         <caption>{% translate "Collection Page"%}</caption>
         <thead>
         {% if collection.collection_type == "lac"%}
