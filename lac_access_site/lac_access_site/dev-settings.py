@@ -17,7 +17,6 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # AIT Settings
-#TODO make these deploy vars
 
 API_KEY = ''
 API_ROOT = 'https://partner.archive-it.org/api/'
@@ -34,16 +33,14 @@ LANGUAGES = [
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&c=-$3&&c0q%)6!2o*wl!t!u1ji6+1^8=c1b1#xsqz!xby_($z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pravin-dev.us.archive.org']
+ALLOWED_HOSTS = []
 
-STATIC_ROOT = '/opt/lac-access-site/static'
 
 # Application definition
 
