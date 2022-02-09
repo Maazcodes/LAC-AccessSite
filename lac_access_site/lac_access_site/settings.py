@@ -39,7 +39,7 @@ LANGUAGES = [
 SECRET_KEY = 'django-insecure-&c=-$3&&c0q%)6!2o*wl!t!u1ji6+1^8=c1b1#xsqz!xby_($z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['pravin-dev.us.archive.org']
 
