@@ -1,6 +1,10 @@
 {% extends "./gcweb-base.html" %}
 {% load i18n %}
 
+{% block breadcrumb %}
+<li><a href="#">{% translate "Search Collections"%}</a></li>
+{% endblock %}
+
 {% block content %}
 
     {% include "./search-bar.html"%}
