@@ -36,8 +36,11 @@ def collection(request, lac_collection_id):
 
     seed_data = get_seeds(collection.ait_collection_map)
 
-    context = {"seed_data": seed_data, "collection":collection}
+    context = {"seed_data": seed_data["data"], "topics": seed_data["topics"], "collection":collection}
 
     #print(context)
     return render(request, 'lac/collection.html', context)
 
+def test(request):
+    collections = AccessSiteCollection.objects.all()
+    return render(request, 'lac/test.html', {"collections":collections})

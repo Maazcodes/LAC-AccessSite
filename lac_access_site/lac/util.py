@@ -1,17 +1,17 @@
 # LAC Access Site Utilities 
 from django.conf import settings
-from functools import reduce
 import requests
 from requests.packages.urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
 import http
-import pprint
 
+#from pprint import pprint
 
 # use http to fetch results from the partner site's rest api
 def get_seeds(collection_ids):
     seeds = []
+    topics = set()
 
     for ait_collection_id in collection_ids:
         endpoint = settings.API_ROOT + 'seed?collection=' + str(ait_collection_id)
@@ -19,23 +19,23 @@ def get_seeds(collection_ids):
         headers = { "authorization":auth_string }
 
         #TODO handle http errors - like invalid token!
+        #TODO limit = -1
         response = requests.get(endpoint, headers=headers)
-
-        #pprint.pprint(response.json())
 
         # parse api output
         for seed in response.json():
             seed_info = {"url":seed["url"]}
 
-            #concatenate metadata entries with multiple values
             for label, data in seed["metadata"].items():
-                seed_info[label.lower()] = reduce(lambda accumulated_value, datum: accumulated_value + ' ' + datum["value"], data,'')
+                if label.lower() == 'subject':
+                    seed_info[label.lower()] = [datum['value'] for datum in data]
+                    topics.update(seed_info[label.lower()])
+                else:
+                    seed_info[label.lower()] = data[0]['value']
 
             seeds.append(seed_info)
-
-    #pprint.pprint(seeds)
-
-    return seeds
+    
+    return {'data':seeds, 'topics':topics}
 
 def get_search_results(query,collection_ids, advanced=dict()):
     endpoint = settings.SEARCH_ROOT 
