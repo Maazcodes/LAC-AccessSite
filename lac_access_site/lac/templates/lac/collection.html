@@ -29,7 +29,11 @@
 
     <br />
 
+    {% if collection.collection_type == "lac" %}
+    <details>
+            <summary><h4 class="h4">{% translate "Filter Options" %}</h4></summary>
     <form class="wb-tables-filter" data-bind-to="seed-table">
+        <h4 class="h4">{% translate "Select Site Language" %}</h4>
         <ul class="list-unstyled">
                 <li class="checkbox">
                         <label for="english-checkbox">
@@ -44,14 +48,18 @@
                         </label>
                 </li>
         </ul>
-        <select name='topic' data-column='2'>
+        <h4 class="h4">{% translate "Select Site Topic" %}</h4>
+        <select class="form-control" name='topic' data-column='2'>
             <option value="">{%translate "Select topic" %}</option>
             {% for topic in topics %}
             <option value="{{topic}}">{{topic}}</option>
             {% endfor %}
         </select>
-        <button type="submit" class="btn btn-primary" aria-controls="dataset-filter1">Filter</button>
+        <br/>
+        <button type="submit" class="btn btn-primary" aria-controls="dataset-filter1">{% translate "Filter" %}</button>
     </form>
+    </details>
+    {%endif%}
 
     <table id="seed-table" class="wb-tables table table-striped table-hover" data-wb-tables='{}'>
         <caption>{% translate "Collection Page"%}</caption>
