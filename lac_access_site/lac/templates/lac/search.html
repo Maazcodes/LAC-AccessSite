@@ -1,7 +1,7 @@
 {% load i18n %}
-{% if results.items %}
+{% if results %}
 <div id="search-results">
-        {% for item in results.items %}
+        {% for item in results %}
         <h3>{{item.title}}</h3>
         <a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{item.link}}">{{item.title}}</a>
         {%autoescape off%}
@@ -12,6 +12,8 @@
         <b>{% translate "Site:"%}</b> {{item.site}}
         <br/>
         <b>{% translate "Date:"%}</b> {{item.date}}
+        <br/>
+        <b>{% translate "Collection:"%}</b> {{item.collection}}
         <hr/>
         {%endfor%}
 </div>

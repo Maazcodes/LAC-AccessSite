@@ -71,4 +71,11 @@ def get_search_results(query,collection_ids, advanced=dict()):
 
     response = http_session.get(endpoint, params=params)
 
-    return response.json()
+    #undo some escaping from the search endpoint
+    results = []
+    response_items = response.json()['items']
+    for item in response_items:
+        item['description']=item['description'].replace('&lt;b&gt;','<b>').replace('&lt;/b&gt;','</b>')
+        results.append(item)
+
+    return results
