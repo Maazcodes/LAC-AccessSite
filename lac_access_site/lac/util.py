@@ -6,7 +6,7 @@ from requests.adapters import HTTPAdapter
 
 import http
 
-#from pprint import pprint
+from pprint import pprint
 
 # use http to fetch results from the partner site's rest api
 def get_seeds(collection_ids):
@@ -21,19 +21,28 @@ def get_seeds(collection_ids):
         #TODO handle http errors - like invalid token!
         #TODO limit = -1
         response = requests.get(endpoint, headers=headers)
+        
+        #TODO remove debug
+        pprint(response.json())
 
-        # parse api output
+        # parse api output into a nicer structure for the template
         for seed in response.json():
-            seed_info = {"url":seed["url"]}
+            # respect AIT's privacy flag
+            if not seed["publicly_visible"]:
+                continue
 
+            seed_info = {"url":seed["url"]}
             for label, data in seed["metadata"].items():
                 if label.lower() == 'subject':
                     seed_info[label.lower()] = [datum['value'] for datum in data]
                     topics.update(seed_info[label.lower()])
                 else:
                     seed_info[label.lower()] = data[0]['value']
-
+            
             seeds.append(seed_info)
+        
+        #TODO remove debug
+        pprint(seeds)
     
     return {'data':seeds, 'topics':topics}
 
