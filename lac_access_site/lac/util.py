@@ -8,6 +8,20 @@ import http
 
 from pprint import pprint
 
+def http_get_with_retries(endpoint, num_retries=4, **kwargs):
+    retry_strategy = Retry(total=num_retries, backoff_factor=3, status_forcelist=[429, 500, 502, 503, 504])
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    http_session = requests.Session()
+    http_session.mount('https://', adapter)
+
+    #debugging
+    if settings.DEBUG:
+        print("Sending http request")
+        http.client.HTTPConnection.debuglevel = 1
+
+    return http_session.get(endpoint, **kwargs)
+
+
 # use http to fetch results from the partner site's rest api
 def get_seeds(collection_ids):
     seeds = []
@@ -25,11 +39,8 @@ def get_seeds(collection_ids):
                    "publicly_visible":True}
 
         #TODO handle http errors - like invalid token!
-        response = requests.get(endpoint, headers=headers, params=params)
+        response = http_get_with_retries(endpoint, headers=headers, params=params)
         
-        #TODO remove debug
-        pprint(response.json())
-
         # parse api output into a nicer structure for the template
         for seed in response.json():
             seed_info = {"url":seed["url"]}
@@ -42,9 +53,6 @@ def get_seeds(collection_ids):
             
             seeds.append(seed_info)
         
-        #TODO remove debug
-        pprint(seeds)
-    
     return {'data':seeds, 'topics':topics}
 
 def get_search_results(query,collection_ids, advanced=dict()):
@@ -69,17 +77,7 @@ def get_search_results(query,collection_ids, advanced=dict()):
         if param_name=='end' and value != '':
             params["end_date"]=value
 
-    retry_strategy = Retry(total=8, backoff_factor=3, status_forcelist=[429, 500, 502, 503, 504])
-    adapter = HTTPAdapter(max_retries=retry_strategy)
-    http_session = requests.Session()
-    http_session.mount('https://', adapter)
-
-    #debugging 
-    if settings.DEBUG:
-        print("Sending search query")
-        http.client.HTTPConnection.debuglevel = 1
-
-    response = http_session.get(endpoint, params=params)
+    response = http_get_with_retries(endpoint, params=params)
 
     #undo some escaping from the search endpoint
     results = []
