@@ -14,23 +14,24 @@ def get_seeds(collection_ids):
     topics = set()
 
     for ait_collection_id in collection_ids:
-        endpoint = settings.API_ROOT + 'seed?collection=' + str(ait_collection_id)
+        endpoint = settings.API_ROOT + 'seed'
+        
         auth_string = "Token " + settings.API_KEY
+        
         headers = { "authorization":auth_string }
+        
+        params = { "collection":str(ait_collection_id),
+                   "limit":str(-1),
+                   "publicly_visible":True}
 
         #TODO handle http errors - like invalid token!
-        #TODO limit = -1
-        response = requests.get(endpoint, headers=headers)
+        response = requests.get(endpoint, headers=headers, params=params)
         
         #TODO remove debug
         pprint(response.json())
 
         # parse api output into a nicer structure for the template
         for seed in response.json():
-            # respect AIT's privacy flag
-            if not seed["publicly_visible"]:
-                continue
-
             seed_info = {"url":seed["url"]}
             for label, data in seed["metadata"].items():
                 if label.lower() == 'subject':
