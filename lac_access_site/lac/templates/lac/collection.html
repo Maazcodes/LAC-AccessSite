@@ -76,6 +76,7 @@
         <tr>
             <th scope="col">{% translate "Title"%}</th>
             <th scope="col">{% translate "Department"%}</th>
+            <th scope="col">{% translate "Lang"%}</th>
             <th scope="col">{% translate "URL"%}</th>
         </tr>
         {% endif %}
@@ -84,20 +85,43 @@
 
         {% if collection.collection_type == "goc"%}
         {% for seed in seed_data %}
-        <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
-            <td>{% if seed.department%}{{seed.department}}{% else %}{% translate "None"%}{% endif %}</td>
-            <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
-        </tr>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "en" %}
+                <tr>
+                    <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td>{% if seed.department%}{{seed.department}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td>{% if seed.language%}{{seed.language}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
+                </tr>
+                {% endif %}
+                {% if LANGUAGE_CODE == "fr" %}
+                <tr>
+                    <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td>{% if seed.ministere%}{{seed.ministere}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td>{% if seed.langue%}{{seed.langue}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
+                </tr>
+                {% endif %}
         {% endfor %}
         {% else %}
         {% for seed in seed_data %}
-        <tr>
-            <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
-            <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
-            <td>{% for subject in seed.subject %}{{subject}}{%if not forloop.last%}, {%endif%}{% empty %}{% translate "None"%}{% endfor %}</td>
-            <td>{% if seed.language %}{{seed.language}}{% else %}{% translate "None"%}{% endif %}</td>
-        </tr>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "en" %}
+                <tr>
+                    <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
+                    <td>{% for subject in seed.subject %}{{subject}}{%if not forloop.last%}, {%endif%}{% empty %}{% translate "None"%}{% endfor %}</td>
+                    <td>{% if seed.language %}{{seed.language}}{% else %}{% translate "None"%}{% endif %}</td>
+                </tr>
+                {% endif %}
+                {% if LANGUAGE_CODE == "fr" %}
+                <tr>
+                    <td>{% if seed.title %}{{seed.title}}{% else %}{% translate "None"%}{% endif %}</td>
+                    <td><a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{seed.url}}">{{ seed.url }}</a></td>
+                    <td>{% for sujet in seed.sujet%}{{sujet}}{%if not forloop.last%}, {%endif%}{% empty %}{% translate "None"%}{% endfor %}</td>
+                    <td>{% if seed.langue %}{{seed.langue}}{% else %}{% translate "None"%}{% endif %}</td>
+                </tr>
+                {% endif %}
         {% endfor %}
         {% endif %}
 

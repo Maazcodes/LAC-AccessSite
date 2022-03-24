@@ -40,18 +40,22 @@ def get_seeds(collection_ids):
 
         #TODO handle http errors - like invalid token!
         response = http_get_with_retries(endpoint, headers=headers, params=params)
+
         
         # parse api output into a nicer structure for the template
         for seed in response.json():
             seed_info = {"url":seed["url"]}
             for label, data in seed["metadata"].items():
-                if label.lower() == 'subject':
+                if label.lower() == 'subject' or label.lower() == 'sujet':
                     seed_info[label.lower()] = [datum['value'] for datum in data]
                     topics.update(seed_info[label.lower()])
                 else:
                     seed_info[label.lower()] = data[0]['value']
             
             seeds.append(seed_info)
+        
+        #TODO remove debug
+        pprint(seeds)
         
     return {'data':seeds, 'topics':topics}
 
