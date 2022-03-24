@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 09:31+0000\n"
+"POT-Creation-Date: 2022-03-24 23:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,164 +16,225 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: lac/templates/lac/advanced-search-page.html:12
+#: admin.py:26
+msgid "Personal info"
+msgstr ""
+
+#: admin.py:28
+msgid "Permissions"
+msgstr ""
+
+#: admin.py:33
+#, fuzzy
+#| msgid "Start date:"
+msgid "Important dates"
+msgstr "Date de début:"
+
+#: templates/lac/advanced-search-page.html:5 templates/lac/search-page.html:5
+#, fuzzy
+#| msgid "All Collections"
+msgid "Search Collections"
+msgstr "Sélectionner des Collections"
+
+#: templates/lac/advanced-search-page.html:16
 #, fuzzy
 #| msgid "All Collections"
 msgid "Select Collection:"
 msgstr "Sélectionner des Collections"
 
-#: lac/templates/lac/advanced-search-page.html:30
+#: templates/lac/advanced-search-page.html:34
 msgid "Find these words:"
 msgstr "Trouvez ces mots:"
 
-#: lac/templates/lac/advanced-search-page.html:34
+#: templates/lac/advanced-search-page.html:38
 msgid "None of these words:"
 msgstr "Aucun de ces mots:"
 
-#: lac/templates/lac/advanced-search-page.html:38
+#: templates/lac/advanced-search-page.html:42
 msgid "This exact phrase:"
 msgstr "Cette phrase exacte:"
 
-#: lac/templates/lac/advanced-search-page.html:42
+#: templates/lac/advanced-search-page.html:46
 msgid "Within this website:"
 msgstr "Dans ce site Web:"
 
-#: lac/templates/lac/advanced-search-page.html:47
+#: templates/lac/advanced-search-page.html:51
 #, fuzzy
 #| msgid "Filetype:"
 msgid "File type:"
 msgstr "Type de Fichier:"
 
-#: lac/templates/lac/advanced-search-page.html:52
+#: templates/lac/advanced-search-page.html:56
 msgid "Start date:"
 msgstr "Date de début:"
 
-#: lac/templates/lac/advanced-search-page.html:56
+#: templates/lac/advanced-search-page.html:60
 msgid "End date:"
 msgstr "Date de clôture:"
 
-#: lac/templates/lac/advanced-search-page.html:60
-#: lac/templates/lac/search-bar.html:6 lac/templates/lac/search-bar.html:33
+#: templates/lac/advanced-search-page.html:64 templates/lac/search-bar.html:6
+#: templates/lac/search-bar.html:33
 msgid "Search"
 msgstr "Recherche"
 
-#: lac/templates/lac/advanced-search-page.html:63
-#: lac/templates/lac/search-page.html:7
+#: templates/lac/advanced-search-page.html:67 templates/lac/search-page.html:11
 msgid "Search Results (Prototype)"
 msgstr "Résultats de la Recherche (Prototype)"
 
-#: lac/templates/lac/advanced-search-page.html:67
-#: lac/templates/lac/search-page.html:11
+#: templates/lac/advanced-search-page.html:71 templates/lac/search-page.html:15
 msgid "Loading search results..."
 msgstr "Chargement des résultats de recherche..."
 
-#: lac/templates/lac/collection.html:5
+#: templates/lac/collection.html:9
 msgid "GoC/LAC Web Archive Prototype"
 msgstr "Prototype d'Archives Web du GOC/BAC"
 
-#: lac/templates/lac/collection.html:28 lac/templates/lac/collection.html:31
+#: templates/lac/collection.html:34
+#, fuzzy
+#| msgid "Filter"
+msgid "Filter Options"
+msgstr "Filtre"
+
+#: templates/lac/collection.html:36
+msgid "Select Site Language"
+msgstr ""
+
+#: templates/lac/collection.html:41
+msgid "English"
+msgstr "Anglais"
+
+#: templates/lac/collection.html:47
+msgid "French"
+msgstr "Français"
+
+#: templates/lac/collection.html:51
+msgid "Select Site Topic"
+msgstr ""
+
+#: templates/lac/collection.html:53
+#, fuzzy
+#| msgid "All Collections"
+msgid "Select topic"
+msgstr "Sélectionner des Collections"
+
+#: templates/lac/collection.html:59
 msgid "Filter"
 msgstr "Filtre"
 
-#: lac/templates/lac/collection.html:30
-msgid "(Under Construction)"
-msgstr "(En Construction)"
-
-#: lac/templates/lac/collection.html:36
+#: templates/lac/collection.html:65
 msgid "Collection Page"
 msgstr "Collection Page"
 
-#: lac/templates/lac/collection.html:40 lac/templates/lac/collection.html:48
+#: templates/lac/collection.html:69 templates/lac/collection.html:77
 msgid "Title"
 msgstr "Titre"
 
-#: lac/templates/lac/collection.html:41 lac/templates/lac/collection.html:50
+#: templates/lac/collection.html:70 templates/lac/collection.html:80
 msgid "URL"
 msgstr "URL"
 
-#: lac/templates/lac/collection.html:42
-msgid "Topic"
+#: templates/lac/collection.html:71
+msgid "Subject"
 msgstr "Sujet"
 
-#: lac/templates/lac/collection.html:43
+#: templates/lac/collection.html:72 templates/lac/collection.html:79
 #, fuzzy
 #| msgid "Language"
-msgid "Lang"
+msgid "Language"
 msgstr "Langue"
 
-#: lac/templates/lac/collection.html:49
+#: templates/lac/collection.html:78
 msgid "Department"
-msgstr "Département"
+msgstr "Ministère"
 
-#: lac/templates/lac/collection.html:59 lac/templates/lac/collection.html:60
-#: lac/templates/lac/collection.html:67 lac/templates/lac/collection.html:69
-#: lac/templates/lac/collection.html:70
+#: templates/lac/collection.html:91 templates/lac/collection.html:92
+#: templates/lac/collection.html:93 templates/lac/collection.html:99
+#: templates/lac/collection.html:100 templates/lac/collection.html:101
+#: templates/lac/collection.html:111 templates/lac/collection.html:113
+#: templates/lac/collection.html:114 templates/lac/collection.html:119
+#: templates/lac/collection.html:121 templates/lac/collection.html:122
 msgid "None"
 msgstr "Aucune"
 
-#: lac/templates/lac/gcweb-base.html:10
+#: templates/lac/gcweb-base.html:10
 msgid "Canadian Web Archive Prototype"
 msgstr "Prototype d'Archives Web Canadiennes"
 
-#: lac/templates/lac/gcweb-base.html:24
+#: templates/lac/gcweb-base.html:24
 msgid "Skip to main content"
 msgstr "Passer au contenu principal"
 
-#: lac/templates/lac/gcweb-base.html:25
+#: templates/lac/gcweb-base.html:25
 msgid "Skip to About this site"
 msgstr "Passer à Propos de ce site"
 
-#: lac/templates/lac/gcweb-base.html:34
+#: templates/lac/gcweb-base.html:34
 msgid "Language selection"
 msgstr "Sélection de la langue"
 
-#: lac/templates/lac/gcweb-base.html:70
+#: templates/lac/gcweb-base.html:70
 msgid "You are here:"
 msgstr "Vous êtes ici:"
 
-#: lac/templates/lac/index.html:6
+#: templates/lac/gcweb-base.html:72
+#, fuzzy
+#| msgid "GoC/LAC Web Archive Prototype"
+msgid "LAC Web Archive Index"
+msgstr "Prototype d'Archives Web du GOC/BAC"
+
+#: templates/lac/index.html:6
 msgid "Government of Canada Web Archive Prototype"
 msgstr "Prototype d'Archives Web du Gouvernement du Canada"
 
-#: lac/templates/lac/index.html:8
+#: templates/lac/index.html:8
 msgid ""
 "Welcome to the Web Archive Access Portal of Libraries and Archives Canada"
 msgstr ""
 "Bienvenue sur le Portail d'accès aux archives Web de Bibliothèques et "
 "Archives Canada"
 
-#: lac/templates/lac/index.html:13
+#: templates/lac/index.html:13
 msgid "Browse"
 msgstr "Parcourir"
 
-#: lac/templates/lac/search-bar.html:9
+#: templates/lac/search-bar.html:9
 msgid "Advanced Search"
 msgstr "Recherche Avancée"
 
-#: lac/templates/lac/search-bar.html:19
+#: templates/lac/search-bar.html:19
 msgid "All Collections"
 msgstr "Toutes les Collections"
 
-#: lac/templates/lac/search.html:10
+#: templates/lac/search.html:10
 msgid "Filetype:"
 msgstr "Type de Fichier:"
 
-#: lac/templates/lac/search.html:12
+#: templates/lac/search.html:12
 msgid "Site:"
 msgstr "Le site:"
 
-#: lac/templates/lac/search.html:14
+#: templates/lac/search.html:14
 msgid "Date:"
 msgstr "Date:"
 
-#: lac/templates/lac/search.html:20
+#: templates/lac/search.html:16
+#, fuzzy
+#| msgid "Collection Page"
+msgid "Collection:"
+msgstr "Collection Page"
+
+#: templates/lac/search.html:22
 msgid "No search results!"
 msgstr "Aucun résultat de recherche!"
 
-#: lac_access_site/settings.py:29
-msgid "English"
-msgstr "Anglais"
+#: templates/lac/test.html:5
+#, fuzzy
+#| msgid "Government of Canada Web Archive Prototype"
+msgid "Government of Canada Web Archive"
+msgstr "Prototype d'Archives Web du Gouvernement du Canada"
 
-#: lac_access_site/settings.py:30
-msgid "French"
-msgstr "Français"
+#~ msgid "(Under Construction)"
+#~ msgstr "(En Construction)"
+
+#~ msgid "Topic"
+#~ msgstr "Sujet"
