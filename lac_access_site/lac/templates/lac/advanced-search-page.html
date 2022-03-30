@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+
     {% get_current_language as LANGUAGE_CODE %}
     {% if LANGUAGE_CODE == "en" %}
     <form method="get" action="/en/advanced-search-results" class="form-inline">
@@ -13,55 +14,77 @@
     {% if LANGUAGE_CODE == "fr" %}
     <form method="get" action="/fr/advanced-search-results" class="form-inline">
     {% endif %}
-    <label for="collectionSelect">{% translate "Select Collection:"%}</label>
-        <select id="collectionSelect" name='i'>
-            {% get_current_language as LANGUAGE_CODE %}
-            {% if LANGUAGE_CODE == "en" %}
-            <option value="all">All Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_en}}</option>
-            {% endfor %}
-            {% endif %}
-            {% if LANGUAGE_CODE == "fr" %}
-            <option value="all">Toutes les Collections</option>
-            {% for collection in collections %}
-            <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>
-        <br/>
 
-        <label for="queryField">{% translate "Find these words:"%}</label>
-        <input id="queryField" type="search" name="q" value=""/>
-        <br/>
+        <ul class='adv-search-flex'>
+                <li>
+                 <label for="collectionSelect">{% translate "Select Collection"%}</label>
+                 <select id="collectionSelect" name='i' class='form-control'>
+                     {% get_current_language as LANGUAGE_CODE %}
+                     {% if LANGUAGE_CODE == "en" %}
+                     <option value="all">All Collections</option>
+                     {% for collection in collections %}
+                     <option value="{{collection.id}}">{{collection.display_name_en}}</option>
+                     {% endfor %}
+                     {% endif %}
+                     {% if LANGUAGE_CODE == "fr" %}
+                     <option value="all">Toutes les Collections</option>
+                     {% for collection in collections %}
+                     <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
+                     {% endfor %}
+                     {% endif %}
+                 </select>
+                </li>
 
-        <label for="antiQueryField">{% translate "None of these words:"%}</label>
-        <input id="antiQueryField" type="search" name="nq" value=""/>
-        <br/>
+                <li>
+                 <label for="queryField">{% translate "Find these words"%}</label>
+                 <input id="queryField" type="search" name="q" value="" class='form-control'/>
+                </li>
 
-        <label for="exactField">{% translate "This exact phrase:"%}</label>
-        <input id="exactField" type="search" name="exact" value=""/>
-        <br/>
+                <li>
+                 <label for="antiQueryField">{% translate "None of these words"%}</label>
+                 <input id="antiQueryField" type="search" name="nq" value="" class='form-control'/>
+                </li>
 
-        <label for="websiteField">{% translate "Within this website:"%}</label>
-        <input id="websiteField" type="search" name="site" value=""/>
-        <br/>
+                <li>
+                 <label for="exactField">{% translate "This exact phrase"%}</label>
+                 <input id="exactField" type="search" name="exact" value="" class='form-control'/>
+                </li>
 
-        <!-- TODO filetype selection dropdown -->
-        <label for="fileField">{% translate "File type:"%}</label>
-        <input id="fileField" type="search" name="filetype" value=""/>
-        <br/>
+                <li>
+                 <label for="websiteField">{% translate "Within this website"%}</label>
+                 <input id="websiteField" type="search" name="site" value="" class='form-control'/>
+                </li>
 
-        <!-- TODO date picker -->
-        <label for="startField">{% translate "Start date:"%}</label>
-        <input id="startField" type="search" name="start" value="" placeholder="yyyy-mm-dd"/>
-        <br/>
+                <li>
+                 <label for="fileField">{% translate "File type"%}</label>
+                 <select id="fileField" type="search" name="filetype" class='form-control'>
+                         <option value="all">{% translate "all formats"%}</option>
+                         <option value="text/html">{% translate "HTML (.htm, .html)"%}</option>
+                         <option value="application/pdf">{% translate "Adobe PDF (.pdf)"%}</option>
+                         <option value="application/msword">{% translate "Microsoft Word (.doc)"%}</option>
+                         <option value="application/vnd.ms-excel">{% translate "Microsoft Excel (.xls)"%}</option>
+                         <option value="application/vnd.ms-powerpoint">{% translate "Microsoft Powerpoint (.ppt)"%}</option>
+                         <option value="text/plain">{% translate "Text file (.txt)"%}</option>
+                 </select>
+                </li>
 
-        <label for="endField">{% translate "End date:"%}</label>
-        <input id="endField" type="search" name="end" value="" placeholder="yyyy-mm-dd"/>
-        <br/>
+                <li>
+                 <label for="startField">{% translate "Start date"%}</label>
+                 <input id="startField" type="date" name="start" value="" placeholder="yyyy-mm-dd" class='form-control'/>
+                </li>
 
-        <button type="submit" class="btn btn-primary">{% translate "Search"%}</button>
+                <li>
+                 <label for="endField">{% translate "End date:"%}</label>
+                 <input id="endField" type="date" name="end" value="" placeholder="yyyy-mm-dd" class='form-control'/>
+                </li>
+
+                <li >
+                <div class="text-right mrgn-tp-md">
+                 <button type="submit" class="form-control btn btn-primary">{% translate "Search"%}</button>
+                 <button type="reset" class="form-control btn btn-default">{% translate "Reset"%}</button>
+                </div>
+                </li>
+        </ul>
     </form>
 
     <h1 id="wb-cont" property="name">{% translate "Search Results (Prototype)"%}</h1>

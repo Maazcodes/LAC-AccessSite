@@ -3,3 +3,27 @@
  color:#284162;
  margin-left:0
 }
+
+#ait-search-bar {
+ flex-grow:1;
+ margin-right:5px;
+ margin-left:5px;
+}
+
+#ait-search-form-group {
+ display:flex;
+}
+
+.adv-search-flex li {
+ display:flex;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: center;
+ padding: 8px;
+}
+
+.adv-search-flex > li > label {
+ flex: 1 0 120px;
+ max-width: 220px;
+}
+

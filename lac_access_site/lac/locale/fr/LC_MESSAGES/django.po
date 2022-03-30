@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-24 23:36+0000\n"
+"POT-Creation-Date: 2022-03-29 19:31-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,52 +36,94 @@ msgstr "Date de début:"
 msgid "Search Collections"
 msgstr "Sélectionner des Collections"
 
-#: templates/lac/advanced-search-page.html:16
+#: templates/lac/advanced-search-page.html:20
 #, fuzzy
 #| msgid "All Collections"
-msgid "Select Collection:"
+msgid "Select Collection"
 msgstr "Sélectionner des Collections"
 
-#: templates/lac/advanced-search-page.html:34
-msgid "Find these words:"
+#: templates/lac/advanced-search-page.html:39
+#, fuzzy
+#| msgid "Find these words:"
+msgid "Find these words"
 msgstr "Trouvez ces mots:"
 
-#: templates/lac/advanced-search-page.html:38
-msgid "None of these words:"
+#: templates/lac/advanced-search-page.html:44
+#, fuzzy
+#| msgid "None of these words:"
+msgid "None of these words"
 msgstr "Aucun de ces mots:"
 
-#: templates/lac/advanced-search-page.html:42
-msgid "This exact phrase:"
+#: templates/lac/advanced-search-page.html:49
+#, fuzzy
+#| msgid "This exact phrase:"
+msgid "This exact phrase"
 msgstr "Cette phrase exacte:"
 
-#: templates/lac/advanced-search-page.html:46
-msgid "Within this website:"
+#: templates/lac/advanced-search-page.html:54
+#, fuzzy
+#| msgid "Within this website:"
+msgid "Within this website"
 msgstr "Dans ce site Web:"
 
-#: templates/lac/advanced-search-page.html:51
+#: templates/lac/advanced-search-page.html:59
 #, fuzzy
 #| msgid "Filetype:"
-msgid "File type:"
+msgid "File type"
 msgstr "Type de Fichier:"
 
-#: templates/lac/advanced-search-page.html:56
-msgid "Start date:"
+#: templates/lac/advanced-search-page.html:61
+msgid "all formats"
+msgstr "tous les formats"
+
+#: templates/lac/advanced-search-page.html:62
+#msgid "HTML (.htm, .html)"
+#msgstr ""
+
+#: templates/lac/advanced-search-page.html:63
+#msgid "Adobe PDF (.pdf)"
+#msgstr ""
+
+#: templates/lac/advanced-search-page.html:64
+#msgid "Microsoft Word (.doc)"
+#msgstr ""
+
+#: templates/lac/advanced-search-page.html:65
+#msgid "Microsoft Excel (.xls)"
+#msgstr ""
+
+#: templates/lac/advanced-search-page.html:66
+#msgid "Microsoft Powerpoint (.ppt)"
+#msgstr ""
+
+#: templates/lac/advanced-search-page.html:67
+msgid "Text file (.txt)"
+msgstr "Fichier texte (.txt)"
+
+#: templates/lac/advanced-search-page.html:72
+#, fuzzy
+#| msgid "Start date:"
+msgid "Start date"
 msgstr "Date de début:"
 
-#: templates/lac/advanced-search-page.html:60
+#: templates/lac/advanced-search-page.html:77
 msgid "End date:"
 msgstr "Date de clôture:"
 
-#: templates/lac/advanced-search-page.html:64 templates/lac/search-bar.html:6
-#: templates/lac/search-bar.html:33
+#: templates/lac/advanced-search-page.html:83 templates/lac/search-bar.html:5
+#: templates/lac/search-bar.html:30
 msgid "Search"
 msgstr "Recherche"
 
-#: templates/lac/advanced-search-page.html:67 templates/lac/search-page.html:11
+#: templates/lac/advanced-search-page.html:84
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: templates/lac/advanced-search-page.html:90 templates/lac/search-page.html:11
 msgid "Search Results (Prototype)"
 msgstr "Résultats de la Recherche (Prototype)"
 
-#: templates/lac/advanced-search-page.html:71 templates/lac/search-page.html:15
+#: templates/lac/advanced-search-page.html:94 templates/lac/search-page.html:15
 msgid "Loading search results..."
 msgstr "Chargement des résultats de recherche..."
 
@@ -197,13 +239,13 @@ msgstr ""
 msgid "Browse"
 msgstr "Parcourir"
 
-#: templates/lac/search-bar.html:9
-msgid "Advanced Search"
-msgstr "Recherche Avancée"
-
-#: templates/lac/search-bar.html:19
+#: templates/lac/search-bar.html:16
 msgid "All Collections"
 msgstr "Toutes les Collections"
+
+#: templates/lac/search-bar.html:32
+msgid "Advanced Search"
+msgstr "Recherche Avancée"
 
 #: templates/lac/search.html:10
 msgid "Filetype:"

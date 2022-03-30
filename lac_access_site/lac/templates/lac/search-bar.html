@@ -2,19 +2,16 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <form method="get" action="/{{LANGUAGE_CODE}}/search-results" class="form-inline">
-    <div class="form-group">
     <label><b>{% translate "Search" %}</b></label>
 
     <br/>
-    <a href="/{{LANGUAGE_CODE}}/advanced-search-results">{% translate "Advanced Search" %}</a>
-    
-    <br/>
 
+    <div id="ait-search-form-group" class="form-group">
     {% comment %}For individual collection pages {% endcomment %}
     {% if collection %}
     <input type="hidden" name="i" value="{{collection.id}}"/>
     {% else %}
-    <select name='i'>
+    <select class='form-control' name='i'>
         <option value="all">{% translate "All Collections" %}</option>
         {% for collection in collections %}
         <option value="{{collection.id}}">
@@ -28,7 +25,9 @@
     </select>
     {% endif %}
 
-    <input type="search" name="q"/>
+    <input id="ait-search-bar" class='form-control' type="search" name="q"/>
     <button type="submit" class="btn btn-primary">{% translate "Search" %}</button>
     </div>
+    <a href="/{{LANGUAGE_CODE}}/advanced-search-results">{% translate "Advanced Search" %}</a>
+    <br/>
 </form>
