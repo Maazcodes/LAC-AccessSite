@@ -120,16 +120,16 @@ msgid "Reset"
 msgstr "Réinitialiser"
 
 #: templates/lac/advanced-search-page.html:90 templates/lac/search-page.html:11
-msgid "Search Results (Prototype)"
-msgstr "Résultats de la Recherche (Prototype)"
+msgid "Search Results"
+msgstr "Résultats de la Recherche"
 
 #: templates/lac/advanced-search-page.html:94 templates/lac/search-page.html:15
 msgid "Loading search results..."
 msgstr "Chargement des résultats de recherche..."
 
 #: templates/lac/collection.html:9
-msgid "GoC/LAC Web Archive Prototype"
-msgstr "Prototype d'Archives Web du GOC/BAC"
+msgid "GoC/LAC Web Archive"
+msgstr "Archives Web du GOC/BAC"
 
 #: templates/lac/collection.html:34
 #, fuzzy
@@ -199,8 +199,8 @@ msgid "None"
 msgstr "Aucune"
 
 #: templates/lac/gcweb-base.html:10
-msgid "Canadian Web Archive Prototype"
-msgstr "Prototype d'Archives Web Canadiennes"
+msgid "Canadian Web Archive"
+msgstr "Archives Web Canadiennes"
 
 #: templates/lac/gcweb-base.html:24
 msgid "Skip to main content"
@@ -220,13 +220,8 @@ msgstr "Vous êtes ici:"
 
 #: templates/lac/gcweb-base.html:72
 #, fuzzy
-#| msgid "GoC/LAC Web Archive Prototype"
 msgid "LAC Web Archive Index"
-msgstr "Prototype d'Archives Web du GOC/BAC"
-
-#: templates/lac/index.html:6
-msgid "Government of Canada Web Archive Prototype"
-msgstr "Prototype d'Archives Web du Gouvernement du Canada"
+msgstr "Archives Web du GOC/BAC"
 
 #: templates/lac/index.html:8
 msgid ""
@@ -268,12 +263,6 @@ msgstr "Collection Page"
 #: templates/lac/search.html:22
 msgid "No search results!"
 msgstr "Aucun résultat de recherche!"
-
-#: templates/lac/test.html:5
-#, fuzzy
-#| msgid "Government of Canada Web Archive Prototype"
-msgid "Government of Canada Web Archive"
-msgstr "Prototype d'Archives Web du Gouvernement du Canada"
 
 #~ msgid "(Under Construction)"
 #~ msgstr "(En Construction)"
