@@ -5,7 +5,7 @@
 }
 
 #ait-search-bar {
- flex-grow:1;
+ flex-grow:.5;
  margin-right:5px;
  margin-left:5px;
 }
