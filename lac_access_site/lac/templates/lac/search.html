@@ -1,7 +1,11 @@
 {% load i18n %}
+{% load ait %}
+{% load cache %}
 {% if results %}
+{% get_current_language as LANGUAGE_CODE %}
 <div id="search-results">
         {% for item in results %}
+        {% cache 6000 search_result item.collection LANGUAGE_CODE%}
         <h3>{{item.title}}</h3>
         <a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{item.link}}">{{item.title}}</a>
         {%autoescape off%}
@@ -11,10 +15,11 @@
         <br/>
         <b>{% translate "Site:"%}</b> {{item.site}}
         <br/>
-        <b>{% translate "Capture Date:"%}</b> {{item.date|slice:":4"}}-{{item.date|slice:"4:6"}}-{{item.date|slice:"6:8"}}
+        <b>{% translate "Capture Date:"%}</b> {% format_ait_date date=item.date %}
         <br/>
-        <b>{% translate "Collection:"%}</b> {{item.collection}}
+        <b>{% translate "Collection:"%}</b> {% ait_collection_name id=item.collection lang_code=LANGUAGE_CODE %}
         <hr/>
+        {% endcache %}
         {%endfor%}
 </div>
 

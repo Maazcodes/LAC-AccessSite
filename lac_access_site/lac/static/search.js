@@ -19,8 +19,9 @@ function getSearchParams() {
 }
 
 function getSearchResults(params) {
+  var path = (document.documentElement.lang  == "fr") ? "/fr/search" : "/search"
   // TODO maybe just pass these along more directly?
-  var reqUrl = "/search?q=" + params.get('q') + "&i=" + params.get('i')
+  var reqUrl = path + "?q=" + params.get('q') + "&i=" + params.get('i')
                 + (params.has("nq") ? "&nq=" + params.get("nq"):"") 
                 + (params.has("exact") ? "&exact=" + params.get("exact"):"") 
                 + (params.has("site") ? "&site=" + params.get("site"):"") 
