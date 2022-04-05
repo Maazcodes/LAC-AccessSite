@@ -11,8 +11,8 @@ def index(request):
     return render(request, 'lac/index.html', {"collections":collections})
 
 def search(request):
-    query = request.GET["q"]
-    access_site_collection_id = request.GET["i"]
+    query = request.GET.get("q","")
+    access_site_collection_id = request.GET.get("i","all")
 
     if access_site_collection_id == 'all':
         collections = [collection.ait_collection_map for collection in AccessSiteCollection.objects.all()]
@@ -21,15 +21,33 @@ def search(request):
 
     results = get_search_results(query, collections, request.GET)
     
-    return render(request, 'lac/search.html', {'results':results})
+    return render(request, 'lac/search.html', {'results':results, "collection" : collection})
 
 def search_page(request):
+    query = request.GET.get("q","")
+    selected_collection = request.GET.get("i","all")
+    if selected_collection.isnumeric():
+        selected_collection = int(selected_collection)
+
     collections = AccessSiteCollection.objects.all()
-    return render(request, 'lac/search-page.html', {"collections":collections})
+    return render(request, 'lac/search-page.html', {"collections":collections, "query" :query, "selected_collection": selected_collection })
 
 def advanced_search_page(request):
+    query = request.GET.get("q","")
+    selected_collection = request.GET.get("i","all")
+    if selected_collection.isnumeric():
+        selected_collection = int(selected_collection)
+
     collections = AccessSiteCollection.objects.all()
-    return render(request, 'lac/advanced-search-page.html', {"collections":collections})
+    return render(
+        request, 
+        'lac/advanced-search-page.html', 
+        {
+            "collections":collections,
+            "query": query,
+            "selected_collection": selected_collection
+        }
+    )
 
 def collection(request, lac_collection_id):
     collection = AccessSiteCollection.objects.get(pk=lac_collection_id)

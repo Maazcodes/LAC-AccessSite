@@ -11,7 +11,7 @@
         <br/>
         <b>{% translate "Site:"%}</b> {{item.site}}
         <br/>
-        <b>{% translate "Date:"%}</b> {{item.date}}
+        <b>{% translate "Capture Date:"%}</b> {{item.date|slice:":4"}}-{{item.date|slice:"4:6"}}-{{item.date|slice:"6:8"}}
         <br/>
         <b>{% translate "Collection:"%}</b> {{item.collection}}
         <hr/>
