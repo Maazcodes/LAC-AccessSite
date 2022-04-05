@@ -12,17 +12,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+import yaml
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+with open("/etc/lac-access-site.yml") as f:
+    conf = yaml.safe_load(f)
+
 # AIT Settings
-#TODO make these deploy vars
 
-API_KEY = ''
-API_ROOT = 'https://partner.archive-it.org/api/'
+API_KEY = conf["API_KEY"]
+API_ROOT = conf["API_ROOT"]
 
-SEARCH_ROOT = 'http://archive-it.org/search-master/opensearch'
+SEARCH_ROOT = conf["SEARCH_ROOT"]
 
 MEDIA_ROOT = 'img'
 
@@ -34,14 +37,13 @@ LANGUAGES = [
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&c=-$3&&c0q%)6!2o*wl!t!u1ji6+1^8=c1b1#xsqz!xby_($z'
+SECRET_KEY = conf["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = conf["DEBUG"] 
 
-ALLOWED_HOSTS = ['pravin-dev.us.archive.org']
+ALLOWED_HOSTS = [conf["HOSTNAME"],'localhost']
 
 STATIC_ROOT = '/opt/lac-access-site/static'
 
