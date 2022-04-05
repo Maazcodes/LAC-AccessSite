@@ -25,8 +25,6 @@ msgid "Permissions"
 msgstr ""
 
 #: admin.py:33
-#, fuzzy
-#| msgid "Start date:"
 msgid "Important dates"
 msgstr "Date de début:"
 
@@ -37,40 +35,28 @@ msgid "Search Collections"
 msgstr "Sélectionner des Collections"
 
 #: templates/lac/advanced-search-page.html:20
-#, fuzzy
-#| msgid "All Collections"
 msgid "Select Collection"
 msgstr "Sélectionner des Collections"
 
 #: templates/lac/advanced-search-page.html:39
-#, fuzzy
-#| msgid "Find these words:"
 msgid "Find these words"
-msgstr "Trouvez ces mots:"
+msgstr "Trouvez ces mots"
 
 #: templates/lac/advanced-search-page.html:44
-#, fuzzy
-#| msgid "None of these words:"
 msgid "None of these words"
-msgstr "Aucun de ces mots:"
+msgstr "Aucun de ces mots"
 
 #: templates/lac/advanced-search-page.html:49
-#, fuzzy
-#| msgid "This exact phrase:"
 msgid "This exact phrase"
-msgstr "Cette phrase exacte:"
+msgstr "Cette phrase exacte"
 
 #: templates/lac/advanced-search-page.html:54
-#, fuzzy
-#| msgid "Within this website:"
 msgid "Within this website"
-msgstr "Dans ce site Web:"
+msgstr "Dans ce site Web"
 
 #: templates/lac/advanced-search-page.html:59
-#, fuzzy
-#| msgid "Filetype:"
 msgid "File type"
-msgstr "Type de Fichier:"
+msgstr "Type de Fichier"
 
 #: templates/lac/advanced-search-page.html:61
 msgid "all formats"
@@ -101,14 +87,12 @@ msgid "Text file (.txt)"
 msgstr "Fichier texte (.txt)"
 
 #: templates/lac/advanced-search-page.html:72
-#, fuzzy
-#| msgid "Start date:"
 msgid "Start date"
-msgstr "Date de début:"
+msgstr "Date de début"
 
 #: templates/lac/advanced-search-page.html:77
-msgid "End date:"
-msgstr "Date de clôture:"
+msgid "End date"
+msgstr "Date de clôture"
 
 #: templates/lac/advanced-search-page.html:83 templates/lac/search-bar.html:5
 #: templates/lac/search-bar.html:30

@@ -14,16 +14,17 @@
  display:flex;
 }
 
-.adv-search-flex li {
- display:flex;
- flex-wrap: wrap;
- align-items: center;
- justify-content: center;
+.adv-search li {
  padding: 8px;
+ list-style: none;
 }
 
-.adv-search-flex > li > label {
- flex: 1 0 120px;
- max-width: 220px;
+.adv-search> li > label {
+  width: 25%;
+  margin-left: 15%;
+  margin-right: 5%;
+  list-style: none;
+  text-align: right;
+
 }
 
