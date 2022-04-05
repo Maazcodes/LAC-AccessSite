@@ -7,7 +7,7 @@
 
 {% block content %}
 
-    {% include "./search-bar.html"%}
+    {% include "./search-bar.html"  with selected_collection=selected_collection query=query %}
     <h1 id="wb-cont" property="name">{% translate "Search Results"%}</h1>
     
     <div class="row">
