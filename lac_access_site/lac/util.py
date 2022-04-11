@@ -45,7 +45,6 @@ def get_seeds(collection_ids):
         #TODO handle http errors - like invalid token!
         response = http_get_with_retries(endpoint, headers=headers, params=params)
 
-        
         # parse api output into a nicer structure for the template
         for seed in response.json():
             seed_info = {"url":seed["url"]}
@@ -59,7 +58,7 @@ def get_seeds(collection_ids):
             seeds.append(seed_info)
         
         #TODO remove debug
-        pprint(seeds)
+        #pprint(seeds)
         
     return {'data':seeds, 'topics':topics}
 
