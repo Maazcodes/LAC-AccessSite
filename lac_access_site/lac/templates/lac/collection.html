@@ -34,7 +34,7 @@
     <div class="col-md-2">
     <h4 class="h4">{% translate "Filter Options" %}</h4>
     <form id="seed-filter" onsubmit="filterList(); return false;"> 
-        <h4 class="h4">{% translate "Search Metadata" %}</h4>
+        <h4 class="h4">{% translate "Search Keyword" %}</h4>
         <input id="keyword-search" class="form-control" type="search">
         <h4 class="h4">{% translate "Select Site Language" %}</h4>
         <ul class="list-unstyled">
@@ -73,12 +73,12 @@
    
     <div id="col-list-nav">
         <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" onclick="pageList(-1); return false;">Previous</a></li>
-                <li class="page-item"><a class="page-link" onclick="pageList(1); return false;" href="#">Next</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="pageList(-1); return false;">{% translate "Previous" %}</a></li>
+                <li class="page-item"><a class="page-link" onclick="pageList(1); return false;" href="#">{% translate "Next" %}</a></li>
         </ul>
 
         <div id="list-stats" class="col-list-text">
-        {% translate "Showing <> out of <> total seeds" %} 
+        {% translate "Showing <> out of <> total sites" %} 
         <br>
         {% translate "Viewing page <>, <> per page" %}
         </div>
