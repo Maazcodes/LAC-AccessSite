@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 19:31-0700\n"
+"POT-Creation-Date: 2022-04-11 16:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,98 +16,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin.py:26
-msgid "Personal info"
-msgstr ""
-
-#: admin.py:28
-msgid "Permissions"
-msgstr ""
-
-#: admin.py:33
-msgid "Important dates"
-msgstr "Date de début:"
-
 #: templates/lac/advanced-search-page.html:5 templates/lac/search-page.html:5
 #, fuzzy
 #| msgid "All Collections"
 msgid "Search Collections"
 msgstr "Sélectionner des Collections"
 
-#: templates/lac/advanced-search-page.html:20
+#: templates/lac/advanced-search-page.html:14
 msgid "Select Collection"
 msgstr "Sélectionner des Collections"
 
-#: templates/lac/advanced-search-page.html:39
+#: templates/lac/advanced-search-page.html:16 templates/lac/search-bar.html:16
+msgid "All Collections"
+msgstr "Toutes les Collections"
+
+#: templates/lac/advanced-search-page.html:29
 msgid "Find these words"
 msgstr "Trouvez ces mots"
 
-#: templates/lac/advanced-search-page.html:44
+#: templates/lac/advanced-search-page.html:34
 msgid "None of these words"
 msgstr "Aucun de ces mots"
 
-#: templates/lac/advanced-search-page.html:49
+#: templates/lac/advanced-search-page.html:39
 msgid "This exact phrase"
 msgstr "Cette phrase exacte"
 
-#: templates/lac/advanced-search-page.html:54
+#: templates/lac/advanced-search-page.html:44
 msgid "Within this website"
 msgstr "Dans ce site Web"
 
-#: templates/lac/advanced-search-page.html:59
+#: templates/lac/advanced-search-page.html:49
 msgid "File type"
 msgstr "Type de Fichier"
 
-#: templates/lac/advanced-search-page.html:61
+#: templates/lac/advanced-search-page.html:51
 msgid "all formats"
 msgstr "tous les formats"
 
-#: templates/lac/advanced-search-page.html:62
-#msgid "HTML (.htm, .html)"
-#msgstr ""
-
-#: templates/lac/advanced-search-page.html:63
-#msgid "Adobe PDF (.pdf)"
-#msgstr ""
-
-#: templates/lac/advanced-search-page.html:64
-#msgid "Microsoft Word (.doc)"
-#msgstr ""
-
-#: templates/lac/advanced-search-page.html:65
-#msgid "Microsoft Excel (.xls)"
-#msgstr ""
-
-#: templates/lac/advanced-search-page.html:66
-#msgid "Microsoft Powerpoint (.ppt)"
-#msgstr ""
-
-#: templates/lac/advanced-search-page.html:67
+# msgid "HTML (.htm, .html)"
+# msgstr ""
+# msgid "Adobe PDF (.pdf)"
+# msgstr ""
+# msgid "Microsoft Word (.doc)"
+# msgstr ""
+# msgid "Microsoft Excel (.xls)"
+# msgstr ""
+# msgid "Microsoft Powerpoint (.ppt)"
+# msgstr ""
+#: templates/lac/advanced-search-page.html:56
 msgid "Text file (.txt)"
 msgstr "Fichier texte (.txt)"
 
-#: templates/lac/advanced-search-page.html:72
+#: templates/lac/advanced-search-page.html:62
 msgid "Start date"
 msgstr "Date de début"
 
-#: templates/lac/advanced-search-page.html:77
+#: templates/lac/advanced-search-page.html:67
 msgid "End date"
 msgstr "Date de clôture"
 
-#: templates/lac/advanced-search-page.html:83 templates/lac/search-bar.html:5
+#: templates/lac/advanced-search-page.html:73 templates/lac/search-bar.html:6
 #: templates/lac/search-bar.html:30
 msgid "Search"
 msgstr "Recherche"
 
-#: templates/lac/advanced-search-page.html:84
+#: templates/lac/advanced-search-page.html:74
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: templates/lac/advanced-search-page.html:90 templates/lac/search-page.html:11
+#: templates/lac/advanced-search-page.html:81 templates/lac/search-page.html:11
 msgid "Search Results"
 msgstr "Résultats de la Recherche"
 
-#: templates/lac/advanced-search-page.html:94 templates/lac/search-page.html:15
+#: templates/lac/advanced-search-page.html:86 templates/lac/search-page.html:15
 msgid "Loading search results..."
 msgstr "Chargement des résultats de recherche..."
 
@@ -115,74 +97,94 @@ msgstr "Chargement des résultats de recherche..."
 msgid "GoC/LAC Web Archive"
 msgstr "Archives Web du GOC/BAC"
 
-#: templates/lac/collection.html:34
+#: templates/lac/collection.html:35
 #, fuzzy
 #| msgid "Filter"
 msgid "Filter Options"
 msgstr "Filtre"
 
-#: templates/lac/collection.html:36
-msgid "Select Site Language"
-msgstr ""
+#: templates/lac/collection.html:37
+msgid "Search Keyword"
+msgstr "Mot-clé de Recherche"
 
-#: templates/lac/collection.html:41
+#: templates/lac/collection.html:39
+msgid "Select Site Language"
+msgstr "Sélectionner la Langue du Site"
+
+#: templates/lac/collection.html:44
 msgid "English"
 msgstr "Anglais"
 
-#: templates/lac/collection.html:47
+#: templates/lac/collection.html:50
 msgid "French"
 msgstr "Français"
 
-#: templates/lac/collection.html:51
+#: templates/lac/collection.html:56
 msgid "Select Site Topic"
-msgstr ""
+msgstr "Sélectionner la Rubrique du Site"
 
-#: templates/lac/collection.html:53
-#, fuzzy
-#| msgid "All Collections"
+#: templates/lac/collection.html:58
 msgid "Select topic"
-msgstr "Sélectionner des Collections"
+msgstr "Sélectionner un sujet"
 
-#: templates/lac/collection.html:59
+#: templates/lac/collection.html:67
 msgid "Filter"
 msgstr "Filtre"
 
-#: templates/lac/collection.html:65
-msgid "Collection Page"
-msgstr "Collection Page"
+#: templates/lac/collection.html:72
+msgid "Archived Sites"
+msgstr "Sites Archivés"
 
-#: templates/lac/collection.html:69 templates/lac/collection.html:77
+#: templates/lac/collection.html:76
+msgid "Previous"
+msgstr "Précédent"
+
+#: templates/lac/collection.html:77
+msgid "Next"
+msgstr "Prochain"
+
+#: templates/lac/collection.html:81
+msgid "Showing <> out of <> total sites"
+msgstr "Afficher <> sites sur un total de <>"
+
+#: templates/lac/collection.html:83
+msgid "Viewing page <>, <> per page"
+msgstr "Affichage de la page <>, <> par page"
+
+#: templates/lac/collection.html:87
+msgid "Sort by: "
+msgstr "Trier par: "
+
+#: templates/lac/collection.html:96
 msgid "Title"
 msgstr "Titre"
 
-#: templates/lac/collection.html:70 templates/lac/collection.html:80
+#: templates/lac/collection.html:96 templates/lac/collection.html:101
+#: templates/lac/collection.html:104 templates/lac/collection.html:106
+#: templates/lac/collection.html:111 templates/lac/collection.html:114
+#: templates/lac/collection.html:116
+msgid "None"
+msgstr "Aucune"
+
+#: templates/lac/collection.html:97
 msgid "URL"
 msgstr "URL"
 
-#: templates/lac/collection.html:71
-msgid "Subject"
-msgstr "Sujet"
-
-#: templates/lac/collection.html:72 templates/lac/collection.html:79
+#: templates/lac/collection.html:101 templates/lac/collection.html:111
 #, fuzzy
 #| msgid "Language"
 msgid "Language"
 msgstr "Langue"
 
-#: templates/lac/collection.html:78
+#: templates/lac/collection.html:104 templates/lac/collection.html:114
 msgid "Department"
 msgstr "Ministère"
 
-#: templates/lac/collection.html:91 templates/lac/collection.html:92
-#: templates/lac/collection.html:93 templates/lac/collection.html:99
-#: templates/lac/collection.html:100 templates/lac/collection.html:101
-#: templates/lac/collection.html:111 templates/lac/collection.html:113
-#: templates/lac/collection.html:114 templates/lac/collection.html:119
-#: templates/lac/collection.html:121 templates/lac/collection.html:122
-msgid "None"
-msgstr "Aucune"
+#: templates/lac/collection.html:106 templates/lac/collection.html:116
+msgid "Subject"
+msgstr "Sujet"
 
-#: templates/lac/gcweb-base.html:10
+#: templates/lac/gcweb-base.html:10 templates/lac/index.html:6
 msgid "Canadian Web Archive"
 msgstr "Archives Web Canadiennes"
 
@@ -218,35 +220,46 @@ msgstr ""
 msgid "Browse"
 msgstr "Parcourir"
 
-#: templates/lac/search-bar.html:16
-msgid "All Collections"
-msgstr "Toutes les Collections"
-
 #: templates/lac/search-bar.html:32
 msgid "Advanced Search"
 msgstr "Recherche Avancée"
 
-#: templates/lac/search.html:10
+#: templates/lac/search.html:15
 msgid "Filetype:"
 msgstr "Type de Fichier:"
 
-#: templates/lac/search.html:12
+#: templates/lac/search.html:16
 msgid "Site:"
 msgstr "Le site:"
 
-#: templates/lac/search.html:14
-msgid "Date:"
-msgstr "Date:"
+#: templates/lac/search.html:17
+msgid "Capture Date:"
+msgstr "Date de Capture"
 
-#: templates/lac/search.html:16
+#: templates/lac/search.html:18
 #, fuzzy
 #| msgid "Collection Page"
 msgid "Collection:"
 msgstr "Collection Page"
 
-#: templates/lac/search.html:22
+#: templates/lac/search.html:39
 msgid "No search results!"
 msgstr "Aucun résultat de recherche!"
+
+#: templates/lac/test.html:5
+#, fuzzy
+#| msgid "Canadian Web Archive"
+msgid "Government of Canada Web Archive"
+msgstr "Archives Web Canadiennes"
+
+#~ msgid "Important dates"
+#~ msgstr "Date de début:"
+
+#~ msgid "Collection Page"
+#~ msgstr "Collection Page"
+
+#~ msgid "Date:"
+#~ msgstr "Date:"
 
 #~ msgid "(Under Construction)"
 #~ msgstr "(En Construction)"
