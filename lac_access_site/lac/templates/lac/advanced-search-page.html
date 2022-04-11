@@ -1,6 +1,6 @@
 {% extends "./gcweb-base.html" %}
 {% load i18n %}
-
+{% load ait %}
 {% block breadcrumb %}
 <li><a href="#">{% translate "Search Collections"%}</a></li>
 {% endblock %}
@@ -13,65 +13,59 @@
                 <li>
                 <label class="sm-col-3" for="collectionSelect">{% translate "Select Collection"%}</label>
                 <select id="collectionSelect" name='i' class='form-control'>
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% if LANGUAGE_CODE == "en" %}
-                    <option value="all">All Collections</option>
-                    {% for collection in collections %}
-                    <option value="{{collection.id}}"{% if collection.id == selected_collection %} selected {% endif %} >
-                        {{collection.display_name_en}}
-                    </option>
+                    <option value="all">{% translate "All Collections" %}</option>
+                        {% for collection in collections %}
+                        <option 
+                            value="{{collection.id}}"
+                            {% ait_select_collection id=collection.id param=request.GET.i %}
+                        >
+                            {% ait_display_name collection=collection lang=LANGUAGE_CODE %}
+                        </option>
                     {% endfor %}
-                    {% endif %}
-                    {% if LANGUAGE_CODE == "fr" %}
-                    <option value="all">Toutes les Collections</option>
-                    {% for collection in collections %}
-                    <option value="{{collection.id}}">{{collection.display_name_fr}}</option>
-                    {% endfor %}
-                    {% endif %}
                 </select>
                 </li>
 
                 <li>
                 <label for="queryField">{% translate "Find these words"%}</label>
-                <input id="queryField" type="search" name="q" value="" class='form-control'/>
+                <input id="queryField" type="search" name="q" value="{{request.GET.q}}" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="antiQueryField">{% translate "None of these words"%}</label>
-                <input id="antiQueryField" type="search" name="nq" value="" class='form-control'/>
+                <input id="antiQueryField" type="search" name="nq" value="{{request.GET.nq}}" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="exactField">{% translate "This exact phrase"%}</label>
-                <input id="exactField" type="search" name="exact" value="" class='form-control'/>
+                <input id="exactField" type="search" name="exact" value="{{request.GET.exact}}" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="websiteField">{% translate "Within this website"%}</label>
-                <input id="websiteField" type="search" name="site" value="" class='form-control'/>
+                <input id="websiteField" type="search" name="site" value="{{request.GET.site}}" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="fileField">{% translate "File type"%}</label>
                 <select id="fileField" type="search" name="filetype" class='form-control'>
                         <option value="">{% translate "all formats"%}</option>
-                        <option value="text/html">{% translate "HTML (.htm, .html)"%}</option>
-                        <option value="application/pdf">{% translate "Adobe PDF (.pdf)"%}</option>
-                        <option value="application/msword">{% translate "Microsoft Word (.doc)"%}</option>
-                        <option value="application/vnd.ms-excel">{% translate "Microsoft Excel (.xls)"%}</option>
-                        <option value="application/vnd.ms-powerpoint">{% translate "Microsoft Powerpoint (.ppt)"%}</option>
-                        <option value="text/plain">{% translate "Text file (.txt)"%}</option>
+                        <option value="text/html" {%if request.GET.filetype == "text/html"%}selected{% endif %}>{% translate "HTML (.htm, .html)"%}</option>
+                        <option value="application/pdf" {%if request.GET.filetype == "application/pd"%}selected{% endif %}>{% translate "Adobe PDF (.pdf)"%}</option>
+                        <option value="application/msword" {%if request.GET.filetype == "application/msword"%}selected{% endif %}>{% translate "Microsoft Word (.doc)"%}</option>
+                        <option value="application/vnd.ms-excel" {%if request.GET.filetype == "application/vnd.ms-excel"%}selected{% endif %}>{% translate "Microsoft Excel (.xls)"%}</option>
+                        <option value="text/plain" {%if request.GET.filetype == "text/plain"%}selected{% endif %} >{% translate "Text file (.txt)"%}</option>
                 </select>
+                
                 </li>
 
                 <li>
                 <label for="startField">{% translate "Start date"%}</label>
-                <input id="startField" type="date" name="start" value="" placeholder="yyyy-mm-dd" class='form-control'/>
+                <input id="startField" type="date" name="start" value="{{request.GET.start}}" placeholder="yyyy-mm-dd" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="endField">{% translate "End date"%}</label>
-                <input id="endField" type="date" name="end" value="" placeholder="yyyy-mm-dd" class='form-control'/>
+                <input id="endField" type="date" name="end" value="{{request.GET.end}}" placeholder="yyyy-mm-dd" class='form-control'/>
                 </li>
 
                 <li >

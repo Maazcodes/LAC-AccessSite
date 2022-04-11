@@ -25,6 +25,24 @@
   margin-right: 5%;
   list-style: none;
   text-align: right;
-
 }
 
+#search-results ol,
+#search-results ul {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#search-results li {
+  list-style: none;
+}
+
+#search-results li.description {
+  font-style: italic;
+}
+
+
+.pagination-wrapper {
+  text-align: center;
+  margin: 0 auto;
+}

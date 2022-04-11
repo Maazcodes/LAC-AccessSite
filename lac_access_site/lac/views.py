@@ -19,8 +19,7 @@ def search(request):
     else:
         collections = AccessSiteCollection.objects.get(pk=access_site_collection_id).ait_collection_map
 
-    results = get_search_results(query, collections, request.GET)
-    
+    results = get_search_results(query, collections, request)
     return render(request, 'lac/search.html', {'results':results, "collection" : collection})
 
 def search_page(request):
@@ -33,19 +32,12 @@ def search_page(request):
     return render(request, 'lac/search-page.html', {"collections":collections, "query" :query, "selected_collection": selected_collection })
 
 def advanced_search_page(request):
-    query = request.GET.get("q","")
-    selected_collection = request.GET.get("i","all")
-    if selected_collection.isnumeric():
-        selected_collection = int(selected_collection)
-
     collections = AccessSiteCollection.objects.all()
     return render(
         request, 
         'lac/advanced-search-page.html', 
         {
-            "collections":collections,
-            "query": query,
-            "selected_collection": selected_collection
+            "collections":collections
         }
     )
 

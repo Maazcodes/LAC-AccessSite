@@ -1,26 +1,38 @@
-{% load i18n %}
-{% load ait %}
-{% load cache %}
-{% if results %}
-{% get_current_language as LANGUAGE_CODE %}
+{% load i18n %} 
+{% load ait %} 
+{% load cache %} 
+
+{% if results %} 
+{%get_current_language as LANGUAGE_CODE %}
 <div id="search-results">
-        {% for item in results %}
-        {% cache 6000 search_result item.collection LANGUAGE_CODE%}
-        <h3>{{item.title}}</h3>
-        <a href="https://bac-lac.wayback.archive-it.org/query?type=urlquery&amp;url={{item.link}}">{{item.title}}</a>
-        {%autoescape off%}
-        <p>{{item.description }}</p>
-        {%endautoescape%}
-        <b>{% translate "Filetype:"%}</b> {{item.type}}
-        <br/>
-        <b>{% translate "Site:"%}</b> {{item.site}}
-        <br/>
-        <b>{% translate "Capture Date:"%}</b> {% format_ait_date date=item.date %}
-        <br/>
-        <b>{% translate "Collection:"%}</b> {% ait_collection_name id=item.collection lang_code=LANGUAGE_CODE %}
-        <hr/>
-        {% endcache %}
-        {%endfor%}
+  <ol>
+    {% for item in results.results %}
+    {% cache 6000 search_result item.collection LANGUAGE_CODE%}
+    <li>
+      <a href="{% ait_this_crawl_url item=item %}"><h3>{{ item.title }}</h3></a>
+      <ul>
+        <li class="description">{%autoescape off%}{{item.description }}{%endautoescape%}</li>
+        <li><b>{% translate "Filetype:"%}</b> {{item.type}}</li>
+        <li><b>{% translate "Site:"%}</b> {{item.site}}</li>
+        <li><b>{% translate "Capture Date:"%}</b> {% format_ait_date date=item.date %}</li>
+        <li><b>{% translate "Collection:"%}</b> {% ait_collection_name id=item.collection lang_code=LANGUAGE_CODE %}</li>
+        <li><a href="{% ait_all_crawls_url item=item %}">All versions of the page</a></li>
+        </ul>
+    </li>
+    <hr />
+    {% endcache %} 
+    {%endfor%}
+  </ol>
+</div>
+<div class="pagination-wrapper">
+        <ul class="pagination">
+                <li {% if not results.has_prev_page %}class="disabled" disabled{% endif %}><a href="{% if results.has_prev_page %}{{results.prev_page }}{% endif %}" rel="prev">Previous</a></li>
+                <li {%if results.current_page == 1 %}class="active">{% endif %}> <a href="{{results.first_page }}"> 1 <span class="wb-inv">Go to Page 1</span></a></li>
+                {% for page in results.page_range %}
+                <li {%if results.current_page ==  page.n %}class="active">{% endif %}><a {% if page.n != "..." %}href="{{page.link }}"{% endif %}>{{page.n}} <span class="wb-inv">Go to Page {{page.n}}</span></a>
+                {% endfor %}
+                <li {% if not results.has_next_page %}class="disabled"{% endif %}><a href="{% if results.has_next_page %}{{results.next_page }}{% endif %}"   rel="next">Next</a></li>
+        </ul>
 </div>
 
 {% else %}
