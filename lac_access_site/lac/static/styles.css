@@ -14,6 +14,16 @@
  display:flex;
 }
 
+#col-list-nav {
+ display:flex;
+}
+
+.col-list-text {
+ flex-grow:.25;
+ margin-right:5px;
+ margin-left:30px;
+}
+
 .adv-search li {
  padding: 8px;
  list-style: none;
@@ -41,6 +51,8 @@
   font-style: italic;
 }
 
+.seed-list-data {
+ list-style-type: none;
 
 .pagination-wrapper {
   text-align: center;
