@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load ait %}
 {% get_current_language as LANGUAGE_CODE %}
 
 <form method="get" action="/{{LANGUAGE_CODE}}/search-results" class="form-inline">
@@ -13,7 +14,7 @@
     <select class='form-control' name='i'>
         <option value="all">{% translate "All Collections" %}</option>
         {% for collection in collections %}
-        <option value="{{collection.id}}" {% if collection.id == selected_collection %} selected {% endif %}>
+        <option value="{{collection.id}}" {% ait_select_collection id=collection.id param=request.GET.i %} >
         {% if LANGUAGE_CODE == "en" %}
         {{collection.display_name_en}}
         {% else %}
@@ -24,7 +25,7 @@
     </select>
     {% endif %}
 
-    <input id="ait-search-bar" class='form-control' value="" type="search" name="q"/>
+    <input id="ait-search-bar" class='form-control' value="{{request.GET.q}}" type="search" name="q"/>
     <button type="submit" class="btn btn-primary">{% translate "Search" %}</button>
     </div>
     <a href="/{{LANGUAGE_CODE}}/advanced-search-results">{% translate "Advanced Search" %}</a>

@@ -1,5 +1,9 @@
 # LAC Access Site Utilities 
+from cgitb import reset
+import re
+from urllib import response
 from django.conf import settings
+from django.core.paginator import Paginator
 import requests
 from requests.packages.urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
@@ -59,15 +63,24 @@ def get_seeds(collection_ids):
         
     return {'data':seeds, 'topics':topics}
 
-def get_search_results(query,collection_ids, advanced=dict()):
+def get_search_results(query,collection_ids, request):
+    PER_PAGE_DEFAULT = 30
     endpoint = settings.SEARCH_ROOT 
-    params = {"fmt":"json","q":query}
+    params = {"fmt":"json","q":query }
 
     params["i"]=collection_ids
 
+    get_query_params = request.GET
+
+    params["n"] = PER_PAGE_DEFAULT
+        
+    page = get_query_params.get("page", "1")
+    if page.isdigit() and int(page) > 1:
+        params['p'] = (int(page) - 1) * int(PER_PAGE_DEFAULT)
+
     # handle params from the advanced search interface
     # TODO can maybe reduce these
-    for param_name,value in advanced.items():
+    for param_name,value in get_query_params.items():
         if param_name=='nq' and value != '':
             params["q"]=query+' -'+value
         if param_name=='exact' and value != '':
@@ -81,13 +94,79 @@ def get_search_results(query,collection_ids, advanced=dict()):
         if param_name=='end' and value != '':
             params["end_date"]=value
 
-    response = http_get_with_retries(endpoint, params=params)
-
-    #undo some escaping from the search endpoint
-    results = []
-    response_items = response.json()['items']
-    for item in response_items:
-        item['description']=item['description'].replace('&lt;b&gt;','<b>').replace('&lt;/b&gt;','</b>')
-        results.append(item)
-
+    response = http_get_with_retries(endpoint, params=params) 
+    results = AitOpensearchResult(response.json(), params['n'], request.headers.get('X-Requesting-Page', ""))
     return results
+
+
+
+class AitOpensearchResult:
+    def __init__(self, response, per_page, requesting_url):
+        self.requesting_url = requesting_url 
+        self.response = response
+        self.count = response['totalResults']
+        self.per_page = per_page
+        self.start = response['startIndex']
+        self.current_page = (self.start // self.per_page) +1 
+        self.num_pages = (self.count // self.per_page) +1
+
+    def results(self):
+        return [
+            {**item, 'description': item['description'].replace('&lt;b&gt;','<b>').replace('&lt;/b&gt;','</b>')} 
+            for item in self.response['items']
+        ]
+
+
+    def has_next_page(self):
+        return self.current_page < self.num_pages
+    
+    def next_page(self):
+        return self.page(self.current_page + 1)
+
+    def has_prev_page(self):
+        return self.current_page > 1
+
+    def prev_page(self):
+        return self.page(self.current_page - 1)
+    
+    def first_page(self):
+        return self.page(1)
+    
+    def last_page(self):
+        return self.page(self.num_pages)
+
+    def page(self, page_number: int):
+        if page_number < 1:
+            page_number = 1
+        if page_number > self.num_pages:
+            page_number = self.num_pages
+        return self.set_page_number_for_link(page_number)
+    
+    def page_range(self):
+        empty_link = [{"n":"...", "link": ""}]
+        if self.num_pages == 1:
+            return []
+        if self.num_pages < 4:
+           return [self.pagination_link(i) for i in range(2,self.num_pages)]
+        elif self.current_page < 4:
+            return [self.pagination_link(i) for i in [2, 3, 4]] + empty_link
+        elif self.current_page > self.num_pages -3:
+            return empty_link +[self.pagination_link(i) for i in [self.num_pages -2, self.num_pages -1]]
+        return  empty_link + [
+                self.pagination_link(i) for i in [self.current_page -1, self.current_page, self.current_page +1]
+            ] + empty_link
+         
+    def pagination_link(self, i):
+            return {"n":i, "link": self.page(i)}
+            
+
+    def set_page_number_for_link(self, page_number):
+        if "page=" in self.requesting_url:
+            return re.sub(rf"(.*)page={self.current_page}(&|$)(.*)", rf"\1page={page_number}\2\3",self.requesting_url )
+        return self.requesting_url + f"&page={page_number}" 
+
+        
+
+
+# dict_keys(['startIndex', 'itemsPerPage', 'index', 'totalResults', 
+# 'responseTime', 'processingTime', 'items', 'title', 'description', 'query', 'urlParams'])
