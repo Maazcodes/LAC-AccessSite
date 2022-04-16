@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}
-
+    
     {% get_current_language as LANGUAGE_CODE %}
-    <form method="get" action="/{{LANGUAGE_CODE}}/advanced-search-results" class="form-inline" id="advanced-form">
+    <form method="get" action="/{{LANGUAGE_CODE}}/advanced-search-results" class="form-inline" id="advanced-form" onsubmit="return validateAdvSearch();" >
         <ul class='adv-search row col-sm-12'>
                 <li>
                 <label class="sm-col-3" for="collectionSelect">{% translate "Select Collection"%}</label>
@@ -27,22 +27,22 @@
 
                 <li>
                 <label for="queryField">{% translate "Find these words"%}</label>
-                <input id="queryField" type="search" name="q" value="{{request.GET.q}}" class='form-control'/>
+                <input id="queryField" type="search" name="q" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="antiQueryField">{% translate "None of these words"%}</label>
-                <input id="antiQueryField" type="search" name="nq" value="{{request.GET.nq}}" class='form-control'/>
+                <input id="antiQueryField" type="search" name="nq" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="exactField">{% translate "This exact phrase"%}</label>
-                <input id="exactField" type="search" name="exact" value="{{request.GET.exact}}" class='form-control'/>
+                <input id="exactField" type="search" name="exact" class='form-control'/>
                 </li>
 
                 <li>
                 <label for="websiteField">{% translate "Within this website"%}</label>
-                <input id="websiteField" type="search" name="site" value="{{request.GET.site}}" class='form-control'/>
+                <input id="websiteField" type="search" name="site" class='form-control'/>
                 </li>
 
                 <li>
@@ -60,12 +60,14 @@
 
                 <li>
                 <label for="startField">{% translate "Start date"%}</label>
-                <input id="startField" type="date" name="start" value="{{request.GET.start}}" placeholder="yyyy-mm-dd" class='form-control'/>
+                <input id="startField" type="date" name="start" placeholder="yyyy-mm-dd" class='form-control'/>
+                <br/>
+                <span id="s-date-error" class="error" aria-live="polite"></span>
                 </li>
 
                 <li>
                 <label for="endField">{% translate "End date"%}</label>
-                <input id="endField" type="date" name="end" value="{{request.GET.end}}" placeholder="yyyy-mm-dd" class='form-control'/>
+                <input id="endField" type="date" name="end" placeholder="yyyy-mm-dd" class='form-control'/>
                 </li>
 
                 <li >
