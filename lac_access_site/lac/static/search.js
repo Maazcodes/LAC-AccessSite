@@ -34,8 +34,8 @@ function validateAdvSearch() {
   let endDate = document.getElementById("endField").value; 
  
   if(!!startDate && !!endDate){
-    let startValue = new Date(startDate).valueOf;
-    let endValue = new Date(endDate).valueOf;
+    let startValue = new Date(startDate).valueOf();
+    let endValue = new Date(endDate).valueOf();
 
     if(startValue >= endValue){
       let errorMsg=document.getElementById("s-date-error");

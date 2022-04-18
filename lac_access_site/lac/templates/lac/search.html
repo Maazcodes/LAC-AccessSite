@@ -1,13 +1,11 @@
 {% load i18n %} 
 {% load ait %} 
-{% load cache %} 
 
 {% if results %} 
 {%get_current_language as LANGUAGE_CODE %}
 <div id="search-results">
   <ol>
     {% for item in results.results %}
-    {% cache 6000 search_result item.collection LANGUAGE_CODE%}
     <li>
       <a href="{% ait_this_crawl_url item=item %}"><h3>{{ item.title }}</h3></a>
       <ul>
@@ -20,7 +18,6 @@
         </ul>
     </li>
     <hr />
-    {% endcache %} 
     {%endfor%}
   </ol>
 </div>
