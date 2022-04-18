@@ -50,7 +50,7 @@
                 <select id="fileField" type="search" name="filetype" class='form-control'>
                         <option value="">{% translate "all formats"%}</option>
                         <option value="text/html" {%if request.GET.filetype == "text/html"%}selected{% endif %}>{% translate "HTML (.htm, .html)"%}</option>
-                        <option value="application/pdf" {%if request.GET.filetype == "application/pd"%}selected{% endif %}>{% translate "Adobe PDF (.pdf)"%}</option>
+                        <option value="application/pdf" {%if request.GET.filetype == "application/pdf"%}selected{% endif %}>{% translate "Adobe PDF (.pdf)"%}</option>
                         <option value="application/msword" {%if request.GET.filetype == "application/msword"%}selected{% endif %}>{% translate "Microsoft Word (.doc)"%}</option>
                         <option value="application/vnd.ms-excel" {%if request.GET.filetype == "application/vnd.ms-excel"%}selected{% endif %}>{% translate "Microsoft Excel (.xls)"%}</option>
                         <option value="text/plain" {%if request.GET.filetype == "text/plain"%}selected{% endif %} >{% translate "Text file (.txt)"%}</option>
