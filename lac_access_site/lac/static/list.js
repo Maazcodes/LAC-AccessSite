@@ -58,7 +58,7 @@ function filterList() {
 //TODO setup event listeners
 function pageList(modifier) {
     let numPages = filterElements.length / perPage;
-        if((Math.ceil(currentPage + modifier) < numPages) && ((currentPage + modifier) > 0)) {
+    if(((currentPage + modifier) <= Math.ceil(numPages)) && ((currentPage + modifier) > 0)) {
         currentPage = currentPage + modifier;
         redrawList(filterElements);
     }
@@ -85,6 +85,12 @@ function sortList(fieldName) {
 function updateStats(){
      stats[0].textContent = statsCopy.replace("<>", filterElements.length).replace("<>", listElements.length);
      stats[2].textContent = pageCopy.replace("<>", currentPage).replace("<>",perPage);
+}
+
+function resetList(){
+    filterElements = listElements;
+    currentPage = 1;
+    redrawList(filterElements);
 }
 
 // state for filtering
