@@ -63,16 +63,29 @@ def get_seeds(collection_ids):
         
     return {'data':seeds, 'topics':topics}
 
-def get_date_range(start=date(1991,1,1), end=date.today()):
+def get_days_in_month(date):
+    if date.month==2:
+        if (date.year % 400) == 0:
+            return 29;
+        elif (date.year % 100) == 0:
+            return 28;
+        elif (date.year % 4) == 0:
+            return 29;
+    elif date.month in [1,3,5,7,8,60,12]:
+        return 31;
+    else:
+        return 30;
+
+def get_date_range(start=date(1991,8,6), end=date.today()):
     
-    if start < date(1991,1,1):
-        start = date(1991,1,1) #year of first webpage
-    if end < date(1991,1,2):
-        end = date(1991,1,2) #year of first webpage
+    if start < date(1991,8,6):
+        start = date(1991,8,6) #year of the first webpage
+    if end < date(1991,8,7):
+        end = date(1991,8,7) 
 
     # generate date prefixes for the indicated time interval
-    days = [start.replace(day=x).strftime("%Y%m%d") for x in range(start.day, 31) ] + [end.replace(day=x).strftime("%Y%m%d") for x in range(1, end.day+1) ]
-    months = [start.replace(month=x).strftime("%Y%m") for x in range(start.month+1, 13) ] + [end.replace(month=x).strftime("%Y%m") for x in range(1, end.month+1) ]
+    days = [start.replace(day=x).strftime("%Y%m%d") for x in range(start.day, get_days_in_month(start)+1) ] + [end.replace(day=x).strftime("%Y%m%d") for x in range(1, end.day+1) ]
+    months = [start.replace(month=x).strftime("%Y%m") for x in range(start.month+1, 13) ] + [end.replace(month=x).strftime("%Y%m") for x in range(1, end.month) ]
     years = [str(start.year + x) for x in range(1, (end.year-start.year))]
 
     interval = days + months + years
