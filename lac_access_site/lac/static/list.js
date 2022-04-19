@@ -52,6 +52,7 @@ function filterList() {
         filterElements = filterElements.filter((div) => div.textContent.includes(inclKeyword));
     }
     filterLen = filterElements.length;
+    currentPage = 1;
     redrawList(filterElements);
 }
 
