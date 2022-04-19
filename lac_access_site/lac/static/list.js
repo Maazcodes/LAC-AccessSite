@@ -52,7 +52,6 @@ function filterList() {
         filterElements = filterElements.filter((div) => div.textContent.includes(inclKeyword));
     }
     filterLen = filterElements.length;
-    currentPage = 1;
     redrawList(filterElements);
 }
 
@@ -106,4 +105,7 @@ let currentPage = 1;
 let stats = document.getElementById("list-stats").childNodes;
 let statsCopy = stats[0].textContent;
 let pageCopy = stats[2].textContent;
+
+//initial setup
+redrawList(listElements);
 updateStats();
