@@ -14,13 +14,15 @@
     <select class='form-control' name='i'>
         <option value="all">{% translate "All Collections" %}</option>
         {% for collection in collections %}
-        <option value="{{collection.id}}" {% ait_select_collection id=collection.id param=request.GET.i %} >
-        {% if LANGUAGE_CODE == "en" %}
-        {{collection.display_name_en}}
-        {% else %}
-        {{collection.display_name_fr}}
+        {% if collection.feature_on_index_page %}
+            <option value="{{collection.id}}" {% ait_select_collection id=collection.id param=request.GET.i %} >
+              {% if LANGUAGE_CODE == "en" %}
+                {{collection.display_name_en}}
+              {% else %}
+                {{collection.display_name_fr}}
+              {% endif %}
+            </option>
         {% endif %}
-        </option>
         {% endfor %}
     </select>
     {% endif %}

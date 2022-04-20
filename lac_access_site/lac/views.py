@@ -15,7 +15,7 @@ def search(request):
     access_site_collection_id = request.GET.get("i","all")
 
     if access_site_collection_id == 'all':
-        collections = [collection.ait_collection_map for collection in AccessSiteCollection.objects.all()]
+        collections = [collection.ait_collection_map for collection in AccessSiteCollection.objects.filter(feature_on_index_page=True)]
     else:
         collections = AccessSiteCollection.objects.get(pk=access_site_collection_id).ait_collection_map
 
