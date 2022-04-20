@@ -17,8 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: templates/lac/advanced-search-page.html:5 templates/lac/search-page.html:5
-#, fuzzy
-#| msgid "All Collections"
 msgid "Search Collections"
 msgstr "Sélectionner des Collections"
 
@@ -64,6 +62,7 @@ msgstr "tous les formats"
 # msgstr ""
 # msgid "Microsoft Powerpoint (.ppt)"
 # msgstr ""
+
 #: templates/lac/advanced-search-page.html:56
 msgid "Text file (.txt)"
 msgstr "Fichier texte (.txt)"
@@ -98,10 +97,9 @@ msgid "GoC/LAC Web Archive"
 msgstr "Archives Web du GOC/BAC"
 
 #: templates/lac/collection.html:35
-#, fuzzy
 #| msgid "Filter"
 msgid "Filter Options"
-msgstr "Filtre"
+msgstr "Options de Filtre"
 
 #: templates/lac/collection.html:37
 msgid "Search Keyword"
@@ -171,8 +169,6 @@ msgid "URL"
 msgstr "URL"
 
 #: templates/lac/collection.html:101 templates/lac/collection.html:111
-#, fuzzy
-#| msgid "Language"
 msgid "Language"
 msgstr "Langue"
 
@@ -205,7 +201,6 @@ msgid "You are here:"
 msgstr "Vous êtes ici:"
 
 #: templates/lac/gcweb-base.html:72
-#, fuzzy
 msgid "LAC Web Archive Index"
 msgstr "Archives Web du GOC/BAC"
 
@@ -237,32 +232,10 @@ msgid "Capture Date:"
 msgstr "Date de Capture"
 
 #: templates/lac/search.html:18
-#, fuzzy
 #| msgid "Collection Page"
 msgid "Collection:"
-msgstr "Collection Page"
+msgstr "Collection:"
 
 #: templates/lac/search.html:39
 msgid "No search results!"
 msgstr "Aucun résultat de recherche!"
-
-#: templates/lac/test.html:5
-#, fuzzy
-#| msgid "Canadian Web Archive"
-msgid "Government of Canada Web Archive"
-msgstr "Archives Web Canadiennes"
-
-#~ msgid "Important dates"
-#~ msgstr "Date de début:"
-
-#~ msgid "Collection Page"
-#~ msgstr "Collection Page"
-
-#~ msgid "Date:"
-#~ msgstr "Date:"
-
-#~ msgid "(Under Construction)"
-#~ msgstr "(En Construction)"
-
-#~ msgid "Topic"
-#~ msgstr "Sujet"

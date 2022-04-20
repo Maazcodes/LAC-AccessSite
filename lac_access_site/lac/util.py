@@ -53,6 +53,8 @@ def get_seeds(collection_ids):
                 if label.lower() == 'subject' or label.lower() == 'sujet':
                     seed_info[label.lower()] = [datum['value'] for datum in data]
                     topics.update(seed_info[label.lower()])
+                elif label.lower() == 'language' or label.lower() == 'langue':
+                    seed_info[label.lower()] = [datum['value'] for datum in data]
                 else:
                     seed_info[label.lower()] = data[0]['value']
             
