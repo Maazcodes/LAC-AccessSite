@@ -15,9 +15,11 @@
                 <select id="collectionSelect" name='i' class='form-control'>
                     <option value="all">{% translate "All Collections" %}</option>
                         {% for collection in collections %}
+                        {% if collection.feature_on_index_page %}
                         <option value="{{collection.id}}">
                             {% ait_display_name collection=collection lang=LANGUAGE_CODE %}
                         </option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 </li>
