@@ -87,7 +87,7 @@
         <div id="sort-list" class="col-list-text">
         {% translate "Sort by: " %}
         <a href="#" onclick="sortList('url-item'); return false;" >URL</a>
-        <a href="#" onclick="sortList('title-item'); return false;">Title</a>
+        <a href="#" onclick="sortList('title-item'); return false;">{% translate "Title" %}</a>
         </div>
     </div>
 
@@ -99,7 +99,7 @@
 
         {% get_current_language as LANGUAGE_CODE %}
         {% if LANGUAGE_CODE == "en" %}
-                <li class="seed-list-data" name='lang-item'><b>{% translate "Language"%}: </b>{% if seed.language%}{{seed.language}}{% else %}{% translate "None"%}{% endif %}</li>
+                <li class="seed-list-data" name='lang-item'><b>{% translate "Language"%}: </b>{% for language in seed.language %}{{language}}{%if not forloop.last%}, {%endif%}{% empty %}{% translate "None"%}{% endfor %}</li>
 
                 {% if collection.collection_type == "goc"%}
                 <li class="seed-list-data" name='dept-item'><b>{% translate "Department"%}: </b>{% if seed.department%}{{seed.department}}{% else %}{% translate "None"%}{% endif %}</li>
@@ -109,7 +109,7 @@
         {% endif %}
 
         {% if LANGUAGE_CODE == "fr" %}
-                <li class="seed-list-data" name='lang-item'><b>{% translate "Language"%}: </b>{% if seed.langue%}{{seed.langue}}{% else %}{% translate "None"%}{% endif %}</li>
+                <li class="seed-list-data" name='lang-item'><b>{% translate "Language"%}: </b>{% for langue in seed.langue %}{{langue}}{%if not forloop.last%}, {%endif%}{% empty %}{% translate "None"%}{% endfor %}</li>
 
                 {% if collection.collection_type == "goc"%}
                 <li class="seed-list-data" name='dept-item'><b>{% translate "Department"%}: </b>{% if seed.ministère%}{{seed.ministère}}{% else %}{% translate "None"%}{% endif %}</li>

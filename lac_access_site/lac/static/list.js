@@ -38,13 +38,17 @@ function filterList() {
     //filter language
     if(inclEng && !inclFr ){
         filterElements = filterElements.filter((div) => {
-                return (div.querySelector("[name=lang-item]").childNodes[1].textContent == "EN") ||
-                (div.querySelector("[name=lang-item]").childNodes[1].textContent == "AN");
+                return (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("EN")) ||
+                (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("AN")) ||
+                (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("English")) ||
+                (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("Anglais"));
         });
     }
     if(inclFr&& !inclEng ){
         filterElements = filterElements.filter((div) => {
-                return div.querySelector("[name=lang-item]").childNodes[1].textContent == "FR";
+                return (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("FR")) ||
+                (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("French")) ||
+                (div.querySelector("[name=lang-item]").childNodes[1].textContent.includes("Français"));
         });
     }
 
