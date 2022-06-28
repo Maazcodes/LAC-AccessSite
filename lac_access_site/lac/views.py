@@ -45,7 +45,7 @@ def collection(request, lac_collection_id):
     collection = AccessSiteCollection.objects.get(pk=lac_collection_id)
 
     seed_data = get_seeds(collection.ait_collection_map)
-
+    print('seed data', seed_data)
     context = {"seed_data": seed_data["data"], "topics": seed_data["topics"], "collection":collection}
 
     #print(context)

@@ -1,6 +1,7 @@
 //get the dom nodes we want to manipulate
 function parseList() {
     let list = document.getElementById("seed-list");
+    console.log('list', Array.from(list.children))
     return Array.from(list.children);
 }
 

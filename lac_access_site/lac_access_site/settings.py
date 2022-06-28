@@ -22,10 +22,10 @@ with open("/etc/lac-access-site.yml") as f:
 
 # AIT Settings
 
-API_KEY = conf["API_KEY"]
-API_ROOT = conf["API_ROOT"]
+API_KEY = ""
+API_ROOT = "https://partner.archive-it.org/api/"
 
-SEARCH_ROOT = conf["SEARCH_ROOT"]
+SEARCH_ROOT = "http://archive-it.org/search-master/opensearch"
 
 MEDIA_ROOT = 'img'
 
@@ -38,12 +38,14 @@ LANGUAGES = [
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = conf["SECRET_KEY"]
+SECRET_KEY = 'django-insecure-eb*1=14oqygo&t_+to6gd_kwkbaf$a#(848tn_&7n#3q)cg1r7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = conf["DEBUG"] 
+# DEBUG = conf["DEBUG"] 
+DEBUG = True 
 
-ALLOWED_HOSTS = [conf["HOSTNAME"],'localhost']
+# ALLOWED_HOSTS = [conf["HOSTNAME"],'localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
 
 STATIC_ROOT = 'static/'
 

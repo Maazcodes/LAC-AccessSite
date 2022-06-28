@@ -35,18 +35,19 @@ def get_seeds(collection_ids):
     for ait_collection_id in collection_ids:
         endpoint = settings.API_ROOT + 'seed'
         
-        auth_string = "Token " + settings.API_KEY
+        # auth_string = "Token " + settings.API_KEY
         
-        headers = { "authorization":auth_string }
+        # headers = { "authorization":auth_string }
         
         params = { "collection":str(ait_collection_id),
                    "limit":str(-1),
                    "publicly_visible":True}
 
         #TODO handle http errors - like invalid token!
-        response = http_get_with_retries(endpoint, headers=headers, params=params)
+        response = http_get_with_retries(endpoint, params=params)
 
         # parse api output into a nicer structure for the template
+        print('seed info', response.json())
         for seed in response.json():
             seed_info = {"url":seed["url"]}
             for label, data in seed["metadata"].items():
@@ -147,7 +148,7 @@ class AitOpensearchResult:
         self.current_page = (self.start // self.per_page) +1 
         self.num_pages = (self.count // self.per_page) +1
 
-    def results(self):
+    def items(self):
         return [
             {**item, 'description': item['description'].replace('&lt;b&gt;','<b>').replace('&lt;/b&gt;','</b>')} 
             for item in self.response['items']
